@@ -185,7 +185,7 @@
                             </a>
                         </li>
                         <li class="nav-item mt-5">
-                            <a href="<%=request.getContextPath()%>/logout"
+                            <a href="<%=request.getContextPath()%>/logout">
                                <i class="fas fa-sign-out-alt"></i> <span>Salir</span>
                             </a>
                         </li>
@@ -196,7 +196,7 @@
                     <h1 class="my-4">Gestión de Usuarios</h1>
                     <div class="card-form">
                         <h2 class="mb-4">Crear Nuevo Usuario</h2>
-                        <form action="/Proyecto-Barberia-BYL/UsuarioServlet" method="post">
+                        <form action="${pageContext.request.contextPath}/UsuarioServlet" method="post">
                             <input type="hidden" name="accion" value="crear">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
@@ -269,7 +269,7 @@
                                                 <i class="fas fa-edit"></i>
                                             </button>
                                             <!-- Eliminar Usuario -->
-                                            <form action="/Proyecto-Barberia-BYL/UsuarioServlet" method="post" class="d-inline">
+                                            <form action="${pageContext.request.contextPath}/UsuarioServlet" method="post" class="d-inline">
                                                 <input type="hidden" name="accion" value="eliminar">
                                                 <input type="hidden" name="id" value="<%= usuario.getId()%>">
                                                 <button type="submit" class="btn btn-danger btn-action" onclick="return confirm('¿Estás seguro de eliminar este usuario?');">
@@ -287,7 +287,7 @@
                                             <h5 class="modal-title">Editar Usuario</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                         </div>
-                                        <form action="/Proyecto-Barberia-BYL/UsuarioServlet" method="post">
+                                        <form action="${pageContext.request.contextPath}/UsuarioServlet" method="post">
                                             <div class="modal-body">
                                                 <input type="hidden" name="accion" value="actualizar">
                                                 <input type="hidden" name="id" value="<%= usuario.getId()%>">
