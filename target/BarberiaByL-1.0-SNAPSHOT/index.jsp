@@ -629,7 +629,7 @@
 
                 <!-- Panel derecho: registro -->
                 <div class="login-right">
-                    <img src="assets/BarberPreLogin.jpg" />
+                    <img src="assets/BarberPreLogin.jpg"/>
                 </div>
             </div>
         </div>
@@ -687,7 +687,7 @@
 
                             <input type="tel" name="numero" placeholder="Número de celular" required pattern="[0-9]{9}" title="Ingresa un número de 9 dígitos">
 
-                            <input type="password" name="contraseña" placeholder="Contraseña" required minlength="8" title="La contraseña debe tener al menos 8 caracteres.">
+                            <input type="password" name="contraseña" placeholder="Contraseña" required>
 
                             <select name="genero" required class="form-select-custom">
                                 <option value="" disabled selected>--Seleccionar Género--</option>

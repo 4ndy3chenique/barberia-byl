@@ -24,8 +24,8 @@ public class UsuarioServlet extends HttpServlet {
 
         // Determinar qué acción realizar con base en el parámetro "accion"
         if (accion != null) {
-            if (accion.equals("crear")) {
-                // Datos del formulario para crear un usuario
+            if (accion.equals("crear") || accion.equals("registrar")) {
+                // Recolectar datos del formulario
                 String nombre = request.getParameter("nombres");
                 String apellido = request.getParameter("apellidos");
                 String email = request.getParameter("correo");
@@ -33,21 +33,24 @@ public class UsuarioServlet extends HttpServlet {
                 String contraseña = request.getParameter("contraseña");
                 String genero = request.getParameter("genero");
 
-                // Crear un nuevo objeto Usuario y llenarlo con los datos
+                // Crear objeto Usuario
                 Usuario nuevoUsuario = new Usuario();
                 nuevoUsuario.setNombre(nombre);
                 nuevoUsuario.setApellido(apellido);
                 nuevoUsuario.setEmail(email);
                 nuevoUsuario.setNumero(numero);
-                nuevoUsuario.setContraseña(contraseña);  // Asegúrate de hashificar la contraseña
+                nuevoUsuario.setContraseña(contraseña);  // Asegúrate de aplicar hash si lo implementas
                 nuevoUsuario.setGenero(genero);
 
-                // Llamar al método de crear usuario
+                // Guardar usuario en la base de datos
                 usuarioDAO.create(nuevoUsuario);
 
-                // Redirigir a una página de éxito
-                response.sendRedirect(request.getContextPath() + "/Administrador/pages/usuarios.jsp");
-
+                // Redirigir según el origen de la solicitud
+                if (accion.equals("registrar")) {
+                    response.sendRedirect("index.jsp");  // Desde modal de registro hacia el index principal
+                } else {
+                    response.sendRedirect("Administrador/pages/usuarios.jsp");  // Desde panel de admin hacia el pandel del admin
+                }
             } else if (accion.equals("actualizar")) {
                 // Datos del formulario para actualizar un usuario
                 int id = Integer.parseInt(request.getParameter("id"));
