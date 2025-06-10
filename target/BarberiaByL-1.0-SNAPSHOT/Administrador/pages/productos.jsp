@@ -226,7 +226,7 @@
                     <!-- Formulario para crear producto -->
                     <div class="card-form">
                         <h2 class="mb-4">Crear Producto</h2>
-                        <form action="/Proyecto-Barberia-BYL/ProductoServlet" method="post">
+                        <form action="${pageContext.request.contextPath}/ProductoServlet" method="post">
                             <input type="hidden" name="accion" value="crear">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
@@ -293,7 +293,7 @@
                                                 <i class="fas fa-edit"></i>
                                             </button>
                                             <!-- Eliminar Producto -->
-                                            <form action="/Proyecto-Barberia-BYL/ProductoServlet" method="post" class="d-inline">
+                                            <form action="${pageContext.request.contextPath}/ProductoServlet" method="post" class="d-inline">
                                                 <input type="hidden" name="accion" value="eliminar">
                                                 <input type="hidden" name="id" value="<%= producto.getId()%>">
                                                 <button type="submit" class="btn btn-danger btn-action" onclick="return confirm('¿Estás seguro de eliminar este producto?');">
@@ -305,7 +305,7 @@
                                         <div class="modal fade" id="editModal<%= producto.getId()%>" tabindex="-1" aria-labelledby="editModalLabel<%= producto.getId()%>" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
-                                                    <form action="/Proyecto-Barberia-BYL/ProductoServlet" method="post">
+                                                    <form action="${pageContext.request.contextPath}/ProductoServlet" method="post">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="editModalLabel<%= producto.getId()%>">Editar Producto</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>

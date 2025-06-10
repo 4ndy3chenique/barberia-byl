@@ -70,7 +70,7 @@ public class BoletasServlet extends HttpServlet {
                     );
 
                     boletasDAO.create(nuevaBoleta);
-                    response.sendRedirect("../../../Proyecto-Barberia-BYL/Administrador/pages/boletas.jsp");
+                    response.sendRedirect(request.getContextPath() + "/Administrador/pages/boletas.jsp");
 
                 } else if (accion.equals("editar")) {
                     int idBoleta = Integer.parseInt(request.getParameter("idBoleta"));
@@ -95,12 +95,12 @@ public class BoletasServlet extends HttpServlet {
                     );
 
                     boletasDAO.update(boletaActualizar);
-                    response.sendRedirect("../../../Proyecto-Barberia-BYL/Administrador/pages/boletas.jsp");
+                    response.sendRedirect(request.getContextPath() + "/Administrador/pages/boletas.jsp");
 
                 } else if (accion.equals("eliminar")) {
                     int idBoleta = Integer.parseInt(request.getParameter("idBoleta"));
                     boletasDAO.delete(idBoleta);
-                    response.sendRedirect("../../../Proyecto-Barberia-BYL/Administrador/pages/boletas.jsp");
+                    response.sendRedirect(request.getContextPath() + "/Administrador/pages/boletas.jsp");
                 } else {
                     response.sendRedirect("error.jsp");
                 }
@@ -110,11 +110,11 @@ public class BoletasServlet extends HttpServlet {
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
             request.setAttribute("errorMensaje", "Error en los datos ingresados: " + e.getMessage());
-            request.getRequestDispatcher("../../../Proyecto-Barberia-BYL/Administrador/pages/boletas.jsp").forward(request, response);
+            request.getRequestDispatcher("/Administrador/pages/boletas.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("errorMensaje", "Ocurrió un error inesperado: " + e.getMessage());
-            request.getRequestDispatcher("../../../Proyecto-Barberia-BYL/Administrador/pages/boletas.jsp").forward(request, response);
+            request.getRequestDispatcher("/Administrador/pages/boletas.jsp").forward(request, response);
         }
     }
 }

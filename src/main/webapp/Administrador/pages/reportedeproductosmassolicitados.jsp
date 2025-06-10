@@ -181,7 +181,7 @@
             try {
                 // Establecer conexión a la base de datos
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdBarberia", "root", "123456789");
+                conn = DriverManager.getConnection("jdbc:mysql://barberiabyl.mysql.database.azure.com:3306/bdbarberia?useSSL=true&requireSSL=false&serverTimezone=UTC", "AdminBarberiaByL", "BarberiaByL123");
                 stmt = conn.createStatement();
 
                 // Formato moneda (USD)
@@ -286,7 +286,7 @@
             }
         %>
 
-        <form action="/Proyecto-Barberia-BYL/GenerarReporteProductosPDF" method="get">
+        <form action="${pageContext.request.contextPath}/GenerarReporteProductosPDF" method="get">
             <button type="submit">Descargar Reporte de Productos en PDF</button>
         </form>
     </div>

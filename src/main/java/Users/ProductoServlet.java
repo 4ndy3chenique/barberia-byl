@@ -39,7 +39,7 @@ public class ProductoServlet extends HttpServlet {
                         productoDAO.create(nuevoProducto);
 
                         // Redirigir a una página de éxito
-                        response.sendRedirect("../../../Proyecto-Barberia-BYL/Administrador/pages/productos.jsp");
+                        response.sendRedirect(request.getContextPath() + "/Administrador/pages/productos.jsp");
                         break;
 
                     case "actualizar":
@@ -56,7 +56,7 @@ public class ProductoServlet extends HttpServlet {
                         productoDAO.update(productoActualizar);
 
                         // Redirigir a una página de éxito
-                        response.sendRedirect("../../../Proyecto-Barberia-BYL/Administrador/pages/productos.jsp");
+                        response.sendRedirect(request.getContextPath() + "/Administrador/pages/productos.jsp");
                         break;
 
                     case "eliminar":
@@ -67,7 +67,7 @@ public class ProductoServlet extends HttpServlet {
                         productoDAO.delete(idEliminar);
 
                         // Redirigir a una página de éxito
-                        response.sendRedirect("../../../Proyecto-Barberia-BYL/Administrador/pages/productos.jsp");
+                        response.sendRedirect(request.getContextPath() + "/Administrador/pages/productos.jsp");
                         break;
 
                     default:
@@ -77,16 +77,16 @@ public class ProductoServlet extends HttpServlet {
                 }
             } else {
                 // Redirigir a una página de error si no hay acción definida
-                response.sendRedirect("error.jsp");
+                response.sendRedirect(request.getContextPath() + "/error.jsp");
             }
         } catch (NumberFormatException e) {
             // Manejar errores de conversión de datos numéricos
             e.printStackTrace();
-            response.sendRedirect("error.jsp");
+                response.sendRedirect(request.getContextPath() + "/error.jsp");
         } catch (Exception e) {
             // Manejar cualquier otra excepción
             e.printStackTrace();
-            response.sendRedirect("error.jsp");
+                response.sendRedirect(request.getContextPath() + "/error.jsp");
         }
     }
 }

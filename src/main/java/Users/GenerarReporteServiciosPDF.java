@@ -32,7 +32,7 @@ public class GenerarReporteServiciosPDF extends HttpServlet {
             try {
                 // Database connection
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdBarberia", "root", "123456789");
+                conn = DriverManager.getConnection("jdbc:mysql://barberiabyl.mysql.database.azure.com:3306/bdbarberia?useSSL=true&requireSSL=false&serverTimezone=UTC", "AdminBarberiaByL", "BarberiaByL123");
                 
                 // Query for most requested service
                 String queryMostRequested = "SELECT servicio, COUNT(*) as total_solicitudes " +

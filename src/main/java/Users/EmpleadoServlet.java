@@ -44,7 +44,7 @@ public class EmpleadoServlet extends HttpServlet {
                 empleadoDAO.create(nuevoEmpleado);
 
                 // Redirigir a una página de éxito
-                response.sendRedirect("../../../Proyecto-Barberia-BYL/Administrador/pages/empleado.jsp");
+                response.sendRedirect(request.getContextPath() + "/Administrador/pages/empleado.jsp");
 
             } else if (accion.equals("actualizar")) {
                 // Datos del formulario para actualizar un empleado
@@ -68,7 +68,7 @@ public class EmpleadoServlet extends HttpServlet {
                 empleadoDAO.update(empleadoActualizar);
 
                 // Redirigir a una página de éxito
-                response.sendRedirect("../../../Proyecto-Barberia-BYL/Administrador/pages/empleado.jsp");
+                response.sendRedirect(request.getContextPath() + "/Administrador/pages/empleado.jsp");
 
             } else if (accion.equals("eliminar")) {
                 // Obtener el ID del empleado a eliminar
@@ -78,14 +78,14 @@ public class EmpleadoServlet extends HttpServlet {
                 empleadoDAO.delete(id);
 
                 // Redirigir a una página de éxito
-                response.sendRedirect("../../../Proyecto-Barberia-BYL/Administrador/pages/empleado.jsp");
+                response.sendRedirect(request.getContextPath() + "/Administrador/pages/empleado.jsp");
 
             } else {
                 // Si no se encuentra una acción válida
-                response.sendRedirect("error.jsp");
+                response.sendRedirect(request.getContextPath() + "/error.jsp");
             }
         } else {
-            response.sendRedirect("error.jsp"); // En caso de no recibir acción
+                response.sendRedirect(request.getContextPath() + "/error.jsp");
         }
     }
 }

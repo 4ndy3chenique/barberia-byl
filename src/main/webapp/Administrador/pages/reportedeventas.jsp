@@ -20,7 +20,7 @@
         String empleadoMasCitas = "";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdBarberia", "root", "123456789");
+            conn = DriverManager.getConnection("jdbc:mysql://barberiabyl.mysql.database.azure.com:3306/bdbarberia?useSSL=true&requireSSL=false&serverTimezone=UTC", "AdminBarberiaByL", "BarberiaByL123");
             stmt = conn.createStatement();
 
             // Consultar el empleado con más citas
@@ -40,7 +40,7 @@
         }
     %>
 
-    <form action="/Proyecto-Barberia-BYL/GenerarReportePDF" method="post">
+    <form action="${pageContext.request.contextPath}/GenerarReportePDF" method="post">
         <input type="hidden" name="empleado" value="<%= empleadoMasCitas %>">
         <button type="submit">Descargar Reporte en PDF</button>
     </form>

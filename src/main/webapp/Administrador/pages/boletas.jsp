@@ -260,7 +260,7 @@
                         <h2>
                             Crear Nueva Boleta
                         </h2>
-                        <form action="/Proyecto-Barberia-BYL/BoletasServlet" method="post">
+                        <form action="${pageContext.request.contextPath}/BoletasServlet" method="post">
                             <input type="hidden" name="accion" value="crear">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
@@ -375,7 +375,7 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="/Proyecto-Barberia-BYL/BoletasServlet" method="post">
+                                            <form action="${pageContext.request.contextPath}/BoletasServlet" method="post">
                                                 <input type="hidden" name="accion" value="editar">
                                                 <input type="hidden" name="idBoleta" value="<%= boleta.getIdBoleta()%>">
                                                 <div class="mb-3">

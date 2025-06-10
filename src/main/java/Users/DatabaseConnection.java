@@ -16,9 +16,9 @@ public class DatabaseConnection {
 
     public static Connection getConnection() throws SQLException {
         try {
-            String url = "jdbc:mysql://localhost:3306/bdBarberia?serverTimezone=UTC";
-            String user = "root";
-            String password = "password";
+            String url = "jdbc:mysql://barberiabyl.mysql.database.azure.com:3306/bdbarberia?useSSL=true&requireSSL=false&serverTimezone=UTC";
+            String user = "AdminBarberiaByL";
+            String password = "BarberiaByL123";
             
             // Agregamos logging para debug
             System.out.println("Intentando conectar a la base de datos...");

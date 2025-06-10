@@ -211,7 +211,7 @@
                     <!-- Formulario -->
                     <div class="card-form">
                         <h2 class="mb-4">Crear Empleado</h2>
-                        <form action="/Proyecto-Barberia-BYL/EmpleadoServlet" method="post">
+                        <form action="${pageContext.request.contextPath}/EmpleadoServlet" method="post">
                             <input type="hidden" name="accion" value="crear">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
@@ -274,7 +274,7 @@
                                             <button type="button" class="btn btn-warning btn-action" data-bs-toggle="modal" data-bs-target="#editModal<%= empleado.getId()%>">
                                                 <i class="fas fa-edit"></i>
                                             </button>
-                                            <form action="/Proyecto-Barberia-BYL/EmpleadoServlet" method="post" class="d-inline">
+                                            <form action="${pageContext.request.contextPath}/EmpleadoServlet" method="post" class="d-inline">
                                                 <input type="hidden" name="accion" value="eliminar">
                                                 <input type="hidden" name="id" value="<%= empleado.getId()%>">
                                                 <button type="submit" class="btn btn-danger btn-action" onclick="return confirm('¿Estás seguro de eliminar este empleado?');">
@@ -289,7 +289,7 @@
                             <div class="modal fade" id="editModal<%= empleado.getId()%>" tabindex="-1">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                        <form action="/Proyecto-Barberia-BYL/EmpleadoServlet" method="post">
+                                        <form action="${pageContext.request.contextPath}/EmpleadoServlet" method="post">
                                             <div class="modal-header">
                                                 <h5 class="modal-title">Editar Empleado</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>

@@ -168,7 +168,7 @@
 
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdBarberia", "root", "123456789");
+                conn = DriverManager.getConnection("jdbc:mysql://barberiabyl.mysql.database.azure.com:3306/bdbarberia?useSSL=true&requireSSL=false&serverTimezone=UTC", "AdminBarberiaByL", "BarberiaByL123");
                 stmt = conn.createStatement();
 
                 // Consultar el servicio más solicitado
@@ -231,7 +231,7 @@
             }
         %>
 
-        <form action="/Proyecto-Barberia-BYL/GenerarReporteServiciosPDF" method="get">
+        <form action="${pageContext.request.contextPath}/GenerarReporteServiciosPDF" method="get">
             <button type="submit">Descargar Reporte de Servicios en PDF</button>
         </form>
     </div>

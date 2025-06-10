@@ -215,7 +215,7 @@
                     <!-- Formulario para crear cita -->
                     <div class="card-form">
                         <h2 class="mb-4">Crear Cita</h2>
-                        <form action="/Proyecto-Barberia-BYL/CitaServlet" method="post">
+                        <form action="${pageContext.request.contextPath}/CitaServlet" method="post">
                             <input type="hidden" name="accion" value="crear">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
@@ -339,7 +339,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="/Proyecto-Barberia-BYL/CitaServlet" method="post">
+                                    <form action="${pageContext.request.contextPath}/CitaServlet" method="post">
                                         <input type="hidden" name="accion" value="actualizar">
                                         <input type="hidden" name="idCita" id="editIdCita">
                                         <div class="row">
@@ -405,7 +405,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <p>¿Estás seguro de que deseas eliminar esta cita?</p>
-                                    <form action="/Proyecto-Barberia-BYL/CitaServlet" method="post">
+                                    <form action="${pageContext.request.contextPath}/CitaServlet" method="post">
                                         <input type="hidden" name="accion" value="eliminar">
                                         <input type="hidden" name="idCita" id="deleteIdCita">
                                         <div class="d-flex justify-content-end">

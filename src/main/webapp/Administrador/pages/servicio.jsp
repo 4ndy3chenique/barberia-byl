@@ -209,7 +209,7 @@
                     <!-- Formulario para crear servicio -->
                     <div class="card-form">
                         <h2 class="mb-4">Crear Servicio</h2>
-                        <form action="/Proyecto-Barberia-BYL/ServicioServlet" method="post">
+                        <form action="${pageContext.request.contextPath}/ServicioServlet" method="post">
                             <input type="hidden" name="accion" value="crear">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
@@ -263,7 +263,7 @@
                                             </button>
 
                                             <!-- Eliminar Servicio -->
-                                            <form action="/Proyecto-Barberia-BYL/ServicioServlet" method="post" class="d-inline">
+                                            <form action="${pageContext.request.contextPath}/ServicioServlet" method="post" class="d-inline">
                                                 <input type="hidden" name="accion" value="eliminar">
                                                 <input type="hidden" name="id" value="<%= servicio.getIdServicio()%>">
                                                 <button type="submit" class="btn btn-danger btn-action" onclick="return confirm('¿Estás seguro de eliminar este servicio?');">
@@ -282,7 +282,7 @@
                                             <h5 class="modal-title" id="editModalLabel<%= servicio.getIdServicio()%>">Editar Servicio</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <form action="/Proyecto-Barberia-BYL/ServicioServlet" method="post">
+                                        <form action="${pageContext.request.contextPath}/ServicioServlet" method="post">
                                             <div class="modal-body">
                                                 <input type="hidden" name="accion" value="actualizar">
                                                 <input type="hidden" name="id" value="<%= servicio.getIdServicio()%>">

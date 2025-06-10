@@ -46,7 +46,7 @@ public class ProveedorServlet extends HttpServlet {
                 proveedorDAO.create(nuevoProveedor);
 
                 // Redirigir a una página de éxito
-                response.sendRedirect("../../../Proyecto-Barberia-BYL/Administrador/pages/proveedor.jsp");
+                response.sendRedirect(request.getContextPath() + "/Administrador/pages/proveedor.jsp");
 
             } else if (accion.equals("actualizar")) {
                 // Datos del formulario para actualizar un proveedor
@@ -70,7 +70,7 @@ public class ProveedorServlet extends HttpServlet {
                 proveedorDAO.update(proveedorActualizar);
 
                 // Redirigir a una página de éxito
-                response.sendRedirect("../../../Proyecto-Barberia-BYL/Administrador/pages/proveedor.jsp");
+                response.sendRedirect(request.getContextPath() + "/Administrador/pages/proveedor.jsp");
 
             } else if (accion.equals("eliminar")) {
                 // Obtener el ID del proveedor a eliminar
@@ -80,14 +80,14 @@ public class ProveedorServlet extends HttpServlet {
                 proveedorDAO.delete(idProveedor);
 
                 // Redirigir a una página de éxito
-                response.sendRedirect("../../../Proyecto-Barberia-BYL/Administrador/pages/proveedor.jsp");
+                response.sendRedirect(request.getContextPath() + "/Administrador/pages/proveedor.jsp");
 
             } else {
                 // Si no se encuentra una acción válida
-                response.sendRedirect("error.jsp");
+                response.sendRedirect(request.getContextPath() + "/error.jsp");
             }
         } else {
-            response.sendRedirect("error.jsp");
+                response.sendRedirect(request.getContextPath() + "/error.jsp");
         }
     }
 }

@@ -204,7 +204,7 @@
                     <!-- Formulario para crear proveedor -->
                     <div class="card-form">
                         <h2 class="mb-4">Crear Proveedor</h2>
-                        <form action="/Proyecto-Barberia-BYL/ProveedorServlet" method="post">
+                        <form action="${pageContext.request.contextPath}/ProveedorServlet" method="post">
                             <input type="hidden" name="accion" value="crear">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
@@ -268,7 +268,7 @@
                                                 <i class="fas fa-edit"></i>
                                             </button>
                                             <!-- Botón para Eliminar Proveedor -->
-                                            <form action="/Proyecto-Barberia-BYL/ProveedorServlet" method="post" class="d-inline">
+                                            <form action="${pageContext.request.contextPath}/ProveedorServlet" method="post" class="d-inline">
                                                 <input type="hidden" name="accion" value="eliminar">
                                                 <input type="hidden" name="idProveedor" value="<%= proveedor.getIdProveedor()%>">
                                                 <button type="submit" class="btn btn-danger btn-action" onclick="return confirm('¿Estás seguro de eliminar este proveedor?');">
@@ -286,7 +286,7 @@
                                             <h5 class="modal-title">Editar Proveedor</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                         </div>
-                                        <form action="/Proyecto-Barberia-BYL/ProveedorServlet" method="post">
+                                        <form action="${pageContext.request.contextPath}/ProveedorServlet" method="post">
                                             <div class="modal-body">
                                                 <input type="hidden" name="accion" value="actualizar">
                                                 <input type="hidden" name="idProveedor" value="<%= proveedor.getIdProveedor()%>">

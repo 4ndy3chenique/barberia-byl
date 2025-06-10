@@ -31,7 +31,7 @@ public class GenerarReporteEspecialidadPDF extends HttpServlet {
             try {
                 // Conexión a la base de datos
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdBarberia", "root", "123456789");
+                conn = DriverManager.getConnection("jdbc:mysql://barberiabyl.mysql.database.azure.com:3306/bdbarberia?useSSL=true&requireSSL=false&serverTimezone=UTC", "AdminBarberiaByL", "BarberiaByL123");
                 
                 // Consultar especialidad más demandada
                 String queryEspecialidadMasDemandada = "SELECT " +

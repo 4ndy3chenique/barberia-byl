@@ -40,9 +40,9 @@ public class ServicioServlet extends HttpServlet {
 
                 // Llamar al método de crear servicio
                 servicioDAO.create(nuevoServicio);
-
+                
                 // Redirigir a una página de éxito
-                response.sendRedirect("../../../Proyecto-Barberia-BYL/Administrador/pages/servicio.jsp");
+                response.sendRedirect(request.getContextPath() + "/Administrador/pages/servicio.jsp");
 
             } else if (accion.equals("actualizar")) {
                 // Datos del formulario para actualizar un servicio
@@ -62,7 +62,7 @@ public class ServicioServlet extends HttpServlet {
                 servicioDAO.update(servicioActualizar);
 
                 // Redirigir a una página de éxito
-                response.sendRedirect("../../../Proyecto-Barberia-BYL/Administrador/pages/servicio.jsp");
+                response.sendRedirect(request.getContextPath() + "/Administrador/pages/servicio.jsp");
 
             } else if (accion.equals("eliminar")) {
                 // Obtener el ID del servicio a eliminar
@@ -72,14 +72,14 @@ public class ServicioServlet extends HttpServlet {
                 servicioDAO.delete(id);
 
                 // Redirigir a una página de éxito
-                response.sendRedirect("../../../Proyecto-Barberia-BYL/Administrador/pages/servicio.jsp");
+                response.sendRedirect(request.getContextPath() + "/Administrador/pages/servicio.jsp");
 
             } else {
                 // Si no se encuentra una acción válida
-                response.sendRedirect("error.jsp");
+                response.sendRedirect(request.getContextPath() + "/error.jsp");
             }
         } else {
-            response.sendRedirect("error.jsp"); // En caso de no recibir acción
+                response.sendRedirect(request.getContextPath() + "/error.jsp");
         }
     }
 }
