@@ -287,7 +287,7 @@
                                             <h5 class="modal-title">Editar Usuario</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                         </div>
-                                        <form action=action="${pageContext.request.contextPath}/UsuarioServlet" method="post">
+                                        <form action="${pageContext.request.contextPath}/UsuarioServlet" method="post">
                                             <div class="modal-body">
                                                 <input type="hidden" name="accion" value="actualizar">
                                                 <input type="hidden" name="id" value="<%= usuario.getId()%>">
