@@ -110,11 +110,5 @@ function validateForm() {
         alert('Por favor, ingresa un número de celular válido de 9 dígitos.');
         return false;
     }
-
-    if (password.length < 8) {
-        alert('La contraseña debe tener al menos 8 caracteres.');
-        return false;
-    }
-
     return true;
 }
