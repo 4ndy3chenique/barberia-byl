@@ -602,7 +602,7 @@
                 <div class="login-left">
                     <h2>Iniciar Sesión</h2>
                     <h2>Cliente</h2>
-                    <form action="/Proyecto-Barberia-BYL/LoginServlet" method="post" novalidate style="width:100%;max-width:360px;text-align:left;">
+                    <form action="${pageContext.request.contextPath}/LoginServlet" method="post" novalidate style="width:100%;max-width:360px;text-align:left;">
                         <label for="correo-cuadro1-login-usuario">Correo Electrónico:</label>
                         <input type="email" id="correo-cuadro1-login-usuario" name="email" placeholder="Ingresa tu correo" required autocomplete="email" />
 
@@ -671,12 +671,11 @@
                 <div class="login-left">
                     <h2>Regístrate</h2>
                     <form 
-                        action="/Proyecto-Barberia-BYL/UsuarioServlet" 
+                        action="${pageContext.request.contextPath}/UsuarioServlet" 
                         method="post" 
                         onsubmit="return validateForm()" 
                         style="width:100%; max-width:360px; text-align:left;">
-
-                        <!-- Cambiado a 'registrar' para redirigir a index_user.jsp -->
+                        
                         <input type="hidden" name="accion" value="registrar">
 
                         <div style="display:flex; flex-direction: column; gap: 10px;">

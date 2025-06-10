@@ -185,8 +185,10 @@
                             </a>
                         </li>
                         <li class="nav-item mt-5">
-                            <a href="<%=request.getContextPath()%>/logout">
-                               <i class="fas fa-sign-out-alt"></i> <span>Salir</span>
+                            <a href="<%= request.getContextPath()%>/logout" 
+                               class="nav-link" 
+                               onclick="return confirm('¿Estás seguro de que deseas cerrar sesión?');">
+                                <i class="fas fa-sign-out-alt"></i> <span>Salir</span>
                             </a>
                         </li>
                     </ul>

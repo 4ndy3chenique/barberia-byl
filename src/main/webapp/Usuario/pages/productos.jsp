@@ -40,7 +40,7 @@
                 <div class="producto-box">
                     <img src="../../assets/servicios-producto1.png" alt="Talco para Hombre">
                     <p>TALCO PARA HOMBRE</p>
-                    <form action="/Proyecto-Barberia-BYL/CarritoServlet" method="post">
+                    <form action="${pageContext.request.contextPath}/CarritoServlet" method="post">
                         <input type="hidden" name="idProducto" value="1">
                         <input type="hidden" name="nombre" value="TALCO PARA HOMBRE">
                         <input type="hidden" name="precio" value="10.00">
@@ -50,7 +50,7 @@
                 <div class="producto-box">
                     <img src="../../assets/servicios-producto2.png" alt="Gel para Cabello">
                     <p>GEL PARA CABELLO</p>
-                    <form action="/Proyecto-Barberia-BYL/CarritoServlet" method="post">
+                    <form action="${pageContext.request.contextPath}/CarritoServlet" method="post">
                         <input type="hidden" name="idProducto" value="2">
                         <input type="hidden" name="nombre" value="GEL PARA CABELLO">
                         <input type="hidden" name="precio" value="20.00">
@@ -60,7 +60,7 @@
                 <div class="producto-box">
                     <img src="../../assets/servicios-producto3.png" alt="Crema para la Cara">
                     <p>CREMA PARA LA CARA</p>
-                    <form action="/Proyecto-Barberia-BYL/CarritoServlet" method="post">
+                    <form action="${pageContext.request.contextPath}/CarritoServlet" method="post">
                         <input type="hidden" name="idProducto" value="3">
                         <input type="hidden" name="nombre" value="CREMA PARA LA CARA">
                         <input type="hidden" name="precio" value="30.00">
@@ -70,7 +70,7 @@
                 <div class="producto-box">
                     <img src="../../assets/servicios-producto4.png" alt="Nombre del Producto 4">
                     <p>NOMBRE DEL PRODUCTO 4</p>
-                    <form action="/Proyecto-Barberia-BYL/CarritoServlet" method="post">
+                    <form action="${pageContext.request.contextPath}/CarritoServlet" method="post">
                         <input type="hidden" name="idProducto" value="4">
                         <input type="hidden" name="nombre" value="NOMBRE DEL PRODUCTO 4">
                         <input type="hidden" name="precio" value="40.00">
@@ -80,7 +80,7 @@
                 <div class="producto-box">
                     <img src="../../assets/servicios-producto5.png" alt="Crema para Granos">
                     <p>CREMA PARA GRANOS</p>
-                    <form action="/Proyecto-Barberia-BYL/CarritoServlet" method="post">
+                    <form action="${pageContext.request.contextPath}/CarritoServlet" method="post">
                         <input type="hidden" name="idProducto" value="5">
                         <input type="hidden" name="nombre" value="CREMA PARA GRANOS">
                         <input type="hidden" name="precio" value="50.00">
@@ -91,7 +91,7 @@
                 <div class="producto-box">
                     <img src="../../assets/servicios-producto6.png" alt="Gel Moco de Gorila">
                     <p>GEL MOCO DE GORILA</p>
-                    <form action="/Proyecto-Barberia-BYL/CarritoServlet" method="post">
+                    <form action="${pageContext.request.contextPath}/CarritoServlet" method="post">
                         <input type="hidden" name="idProducto" value="6">
                         <input type="hidden" name="nombre" value="GEL MOCO DE GORILA">
                         <input type="hidden" name="precio" value="60.00">
@@ -101,7 +101,7 @@
                 <div class="producto-box">
                     <img src="../../assets/servicios-producto7.png" alt="Sprite Hidratante">
                     <p>SPRITE HIDRATANTE</p>
-                    <form action="/Proyecto-Barberia-BYL/CarritoServlet" method="post">
+                    <form action="${pageContext.request.contextPath}/CarritoServlet" method="post">
                         <input type="hidden" name="idProducto" value="7">
                         <input type="hidden" name="nombre" value="SPRITE HIDRATANTE">
                         <input type="hidden" name="precio" value="70.00">
@@ -111,7 +111,7 @@
                 <div class="producto-box">
                     <img src="../../assets/servicios-producto8.png" alt="Pomada para Hombre">
                     <p>POMADA PARA HOMBRE</p>
-                    <form action="/Proyecto-Barberia-BYL/CarritoServlet" method="post">
+                    <form action="${pageContext.request.contextPath}/CarritoServlet" method="post">
                         <input type="hidden" name="idProducto" value="8">
                         <input type="hidden" name="nombre" value="POMADA PARA HOMBRE">
                         <input type="hidden" name="precio" value="80.00">
@@ -121,7 +121,7 @@
                 <div class="producto-box">
                     <img src="../../assets/servicios-producto9.png" alt="Crema para Hidratar el Cabello">
                     <p>CREMA PARA HIDRATAR EL CABELLO</p>
-                    <form action="/Proyecto-Barberia-BYL/CarritoServlet" method="post">
+                    <form action="${pageContext.request.contextPath}/CarritoServlet" method="post">
                         <input type="hidden" name="idProducto" value="9">
                         <input type="hidden" name="nombre" value="CREMA PARA HIDRATAR EL CABELLO">
                         <input type="hidden" name="precio" value="90.00">
@@ -131,7 +131,7 @@
                 <div class="producto-box">
                     <img src="../../assets/servicios-producto10.png" alt="Crema de Mascarilla">
                     <p>CREMA DE MASCARILLA</p>
-                    <form action="/Proyecto-Barberia-BYL/CarritoServlet" method="post">
+                    <form action="${pageContext.request.contextPath}/CarritoServlet" method="post">
                         <input type="hidden" name="idProducto" value="10">
                         <input type="hidden" name="nombre" value="CREMA DE MASCARILLA">
                         <input type="hidden" name="precio" value="100.00">

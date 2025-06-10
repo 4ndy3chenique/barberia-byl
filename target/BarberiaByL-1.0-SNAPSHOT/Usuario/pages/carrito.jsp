@@ -108,7 +108,7 @@
                         <td><%= producto.get("nombre") %></td>
                         <td>S/ <%= producto.get("precio") %></td>
                         <td>
-                            <form action="/Proyecto-Barberia-BYL/CarritoServlet" method="post">
+                            <form action="${pageContext.request.contextPath}/CarritoServlet" method="post">
                                 <input type="hidden" name="accion" value="eliminar">
                                 <input type="hidden" name="idProducto" value="<%= producto.get("idProducto") %>">
                                 <button type="submit" class="btn btn-danger">Eliminar</button>
