@@ -46,7 +46,7 @@ public class UsuarioServlet extends HttpServlet {
                 usuarioDAO.create(nuevoUsuario);
 
                 // Redirigir a una página de éxito
-                response.sendRedirect("../../../Proyecto-Barberia-BYL/Administrador/pages/usuarios.jsp");
+                response.sendRedirect(request.getContextPath() + "/Administrador/pages/usuarios.jsp");
 
             } else if (accion.equals("actualizar")) {
                 // Datos del formulario para actualizar un usuario
@@ -72,7 +72,8 @@ public class UsuarioServlet extends HttpServlet {
                 usuarioDAO.update(usuarioActualizar);
 
                 // Redirigir a una página de éxito
-                response.sendRedirect("../../../Proyecto-Barberia-BYL/Administrador/pages/usuarios.jsp");
+                response.sendRedirect(request.getContextPath() + "/Administrador/pages/usuarios.jsp");
+
 
             } else if (accion.equals("eliminar")) {
                 // Obtener el ID del usuario a eliminar
@@ -82,14 +83,14 @@ public class UsuarioServlet extends HttpServlet {
                 usuarioDAO.delete(id);
 
                 // Redirigir a una página de éxito
-                response.sendRedirect("../../../Proyecto-Barberia-BYL/Administrador/pages/usuarios.jsp");
+                response.sendRedirect(request.getContextPath() + "/Administrador/pages/usuarios.jsp");
 
             } else {
                 // Si no se encuentra una acción válida
-                response.sendRedirect("error.jsp");
+                response.sendRedirect(request.getContextPath() + "/error.jsp");
             }
         } else {
-            response.sendRedirect("error.jsp"); // En caso de no recibir acción
+            response.sendRedirect(request.getContextPath() + "/error.jsp");
         }
     }
 }
