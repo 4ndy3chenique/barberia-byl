@@ -1,42 +1,42 @@
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\GenerarReportePDF.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\ProveedorDAO.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\svAdministrador.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\ProductoDAO.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\BoletasDAO.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\Empleado.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\GenerarReporteProductosPDF.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\Usuario.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Proveedores.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Servicios.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\Abastecimiento.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\EmpleadoDAO.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\Conexion.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\Producto.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\BoletasServlet.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\LogoutServlet.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\EmpleadoServlet.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\UsuarioDAO.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Productos.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\CarritoServlet.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\Cita.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\Servicio.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\Proveedor.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\GenerarReporteBoletasPDF.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\DatabaseConnection.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\ProveedorServlet.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\solucionesweb\barberiabyl\JakartaRestConfiguration.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\TestConnection.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\CitaDAO.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\ServicioServlet.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\LoginServlet.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\Boletas.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\ServicioDAO.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\ProductoServlet.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Boleta.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\DAO.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\solucionesweb\barberiabyl\resources\JakartaEE10Resource.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\GenerarReporteServiciosPDF.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\ContactoProveedor.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\UsuarioServlet.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\CitaServlet.java
-D:\BarberiaByL(Maven)\BarberiaByL\src\main\java\Users\GenerarReporteEspecialidadPDF.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\Cita.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\Conexion.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\Empleado.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\solucionesweb\barberiabyl\JakartaRestConfiguration.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\Boletas.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\Producto.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\Servicio.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Proveedores.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\svAdministrador.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\BoletasDAO.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\LoginServlet.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\GenerarReporteBoletasPDF.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\solucionesweb\barberiabyl\resources\JakartaEE10Resource.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\GenerarReporteProductosPDF.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Boleta.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\ProductoDAO.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\TestConnection.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\EmpleadoServlet.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\UsuarioServlet.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\DatabaseConnection.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\Abastecimiento.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\GenerarReporteEspecialidadPDF.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\ProductoServlet.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\Proveedor.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\GenerarReportePDF.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\GenerarReporteServiciosPDF.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Productos.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\LogoutServlet.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\ProveedorServlet.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\Usuario.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\BoletasServlet.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\ContactoProveedor.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\CitaServlet.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\EmpleadoDAO.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\ServicioServlet.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\CitaDAO.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\ServicioDAO.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Servicios.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\ProveedorDAO.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\UsuarioDAO.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\CarritoServlet.java
+D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\DAO.java

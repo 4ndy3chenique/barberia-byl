@@ -143,7 +143,6 @@
     <body>
         <div class="container-fluid">
             <div class="row">
-                <!-- Sidebar -->
                 <div class="col-md-2 sidebar">
                     <div class="logo text-center my-4">
                         <img src="../../Administrador/img/barber-logo.jpg" alt="Logo" class="img-fluid rounded-circle">
@@ -185,15 +184,14 @@
                             </a>
                         </li>
                         <li class="nav-item mt-5">
-                            <a href="<%= request.getContextPath()%>/logout" 
-                               class="nav-link" 
+                            <a href="<%= request.getContextPath()%>/logout"
+                               class="nav-link"
                                onclick="return confirm('¿Estás seguro de que deseas cerrar sesión?');">
                                 <i class="fas fa-sign-out-alt"></i> <span>Salir</span>
                             </a>
                         </li>
                     </ul>
                 </div>
-                <!-- Main Content -->
                 <div class="col-md-10 main-content">
                     <h1 class="my-4">Gestión de Usuarios</h1>
                     <div class="card-form">
@@ -238,7 +236,6 @@
                             </button>
                         </form>
                     </div>
-                    <!-- Tabla de usuarios -->
                     <div class="card table-responsive table-users">
                         <div class="card-header bg-primary text-white">
                             <h2 class="mb-0">Lista de Usuarios</h2>
@@ -246,7 +243,6 @@
                         <table class="table table-striped table-hover mb-0">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Nombres</th>
                                     <th>Apellidos</th>
                                     <th>Correo</th>
@@ -258,7 +254,6 @@
                             <tbody>
                                 <% for (Usuario usuario : usuarios) {%>
                                 <tr>
-                                    <td><%= usuario.getId()%></td>
                                     <td><%= usuario.getNombre()%></td>
                                     <td><%= usuario.getApellido()%></td>
                                     <td><%= usuario.getEmail()%></td>
@@ -266,11 +261,9 @@
                                     <td><%= usuario.getGenero()%></td>
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <!-- Editar Usuario -->
                                             <button type="button" class="btn btn-info btn-action" data-bs-toggle="modal" data-bs-target="#editModal<%= usuario.getId()%>">
                                                 <i class="fas fa-edit"></i>
                                             </button>
-                                            <!-- Eliminar Usuario -->
                                             <form action="${pageContext.request.contextPath}/UsuarioServlet" method="post" class="d-inline">
                                                 <input type="hidden" name="accion" value="eliminar">
                                                 <input type="hidden" name="id" value="<%= usuario.getId()%>">
@@ -281,62 +274,60 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <!-- Modal para editar usuario -->
-                            <div class="modal fade" id="editModal<%= usuario.getId()%>" tabindex="-1">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Editar Usuario</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                <div class="modal fade" id="editModal<%= usuario.getId()%>" tabindex="-1">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Editar Usuario</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                            </div>
+                                            <form action="${pageContext.request.contextPath}/UsuarioServlet" method="post">
+                                                <div class="modal-body">
+                                                    <input type="hidden" name="accion" value="actualizar">
+                                                    <input type="hidden" name="id" value="<%= usuario.getId()%>">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Nombres</label>
+                                                        <input type="text" name="nombres" class="form-control" value="<%= usuario.getNombre()%>" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Apellidos</label>
+                                                        <input type="text" name="apellidos" class="form-control" value="<%= usuario.getApellido()%>" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Correo</label>
+                                                        <input type="email" name="correo" class="form-control" value="<%= usuario.getEmail()%>" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Número</label>
+                                                        <input type="text" name="numero" class="form-control" value="<%= usuario.getNumero()%>" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Nueva Contraseña</label>
+                                                        <input type="password" name="contraseña" class="form-control" placeholder="Dejar en blanco si no cambia">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Género</label>
+                                                        <select name="genero" class="form-select" required>
+                                                            <option value="Masculino" <%= usuario.getGenero().equals("Masculino") ? "selected" : ""%>>Masculino</option>
+                                                            <option value="Femenino" <%= usuario.getGenero().equals("Femenino") ? "selected" : ""%>>Femenino</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                                </div>
+                                            </form>
                                         </div>
-                                        <form action="${pageContext.request.contextPath}/UsuarioServlet" method="post">
-                                            <div class="modal-body">
-                                                <input type="hidden" name="accion" value="actualizar">
-                                                <input type="hidden" name="id" value="<%= usuario.getId()%>">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Nombres</label>
-                                                    <input type="text" name="nombres" class="form-control" value="<%= usuario.getNombre()%>" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Apellidos</label>
-                                                    <input type="text" name="apellidos" class="form-control" value="<%= usuario.getApellido()%>" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Correo</label>
-                                                    <input type="email" name="correo" class="form-control" value="<%= usuario.getEmail()%>" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Número</label>
-                                                    <input type="text" name="numero" class="form-control" value="<%= usuario.getNumero()%>" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Nueva Contraseña</label>
-                                                    <input type="password" name="contraseña" class="form-control" placeholder="Dejar en blanco si no cambia">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Género</label>
-                                                    <select name="genero" class="form-select" required>
-                                                        <option value="Masculino" <%= usuario.getGenero().equals("Masculino") ? "selected" : ""%>>Masculino</option>
-                                                        <option value="Femenino" <%= usuario.getGenero().equals("Femenino") ? "selected" : ""%>>Femenino</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                                            </div>
-                                        </form>
                                     </div>
                                 </div>
-                            </div>
-                            <% }%>
+                                <% }%>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Bootstrap JS and dependencies -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
     </body>

@@ -1,6 +1,7 @@
 <%@ page import="Users.CitaDAO, Users.Cita, java.util.LinkedList" %>
 <%@ include file="/proteger.jsp" %>
-<%    // Obtener la lista de citas
+<%
+    // Obtener la lista de citas
     CitaDAO citaDAO = new CitaDAO();
     LinkedList<Cita> citas = citaDAO.list();
 %>
@@ -11,9 +12,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Gestión de Citas - Barbería</title>
-        <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Font Awesome para íconos -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
         <style>
@@ -148,14 +147,11 @@
                 color: #222 !important;
             }
 
-
-
         </style>
     </head>
     <body>
         <div class="container-fluid">
             <div class="row">
-                <!-- Barra lateral -->
                 <div class="col-md-2 sidebar" id="sidebar">
                     <div class="logo text-center my-4">
                         <img src="../../Administrador/img/barber-logo.jpg" alt="Logo" class="img-fluid rounded-circle">
@@ -197,8 +193,8 @@
                             </a>
                         </li>
                         <li class="nav-item mt-5">
-                            <a href="<%= request.getContextPath()%>/logout" 
-                               class="nav-link" 
+                            <a href="<%= request.getContextPath()%>/logout"
+                               class="nav-link"
                                onclick="return confirm('¿Estás seguro de que deseas cerrar sesión?');">
                                 <i class="fas fa-sign-out-alt"></i> <span>Salir</span>
                             </a>
@@ -207,12 +203,8 @@
                     </ul>
                 </div>
 
-                <!-- Fin Barra lateral -->
-
-                <!-- Main Content -->
                 <div class="col-md-10 main-content" id="mainContent">
                     <h1 class="my-4">Gestión de Citas</h1>
-                    <!-- Formulario para crear cita -->
                     <div class="card-form">
                         <h2 class="mb-4">Crear Cita</h2>
                         <form action="${pageContext.request.contextPath}/CitaServlet" method="post">
@@ -266,7 +258,6 @@
                             </button>
                         </form>
                     </div>
-                    <!-- Tabla de citas -->
                     <div class="card table-responsive">
                         <div class="card-header bg-primary text-white">
                             <h2 class="mb-0">Lista de Citas</h2>
@@ -274,7 +265,6 @@
                         <table class="table table-striped table-hover mb-0">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Empleado</th>
                                     <th>Servicio</th>
                                     <th>Sede</th>
@@ -287,13 +277,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <% for (Cita cita : citas) {%>
+                                <%
+                                    // Formato para la fecha
+                                    java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("dd/MM/yyyy");
+                                    for (Cita cita : citas) {
+                                %>
                                 <tr>
-                                    <td><%= cita.getIdCita()%></td>
                                     <td><%= cita.getEmpleado()%></td>
                                     <td><%= cita.getServicio()%></td>
                                     <td><%= cita.getSede()%></td>
-                                    <td><%= cita.getFecha()%></td>
+                                    <td><%= dateFormat.format(cita.getFecha())%></td> <%-- Formato dd/MM/yyyy --%>
                                     <td><%= cita.getHoraInicio()%></td>
                                     <td><%= cita.getHoraFin()%></td>
                                     <td><%= cita.getClienteNombre()%></td>
@@ -329,8 +322,6 @@
                             </tbody>
                         </table>
                     </div>
-                    <!-- Modals for Edit and Delete -->
-                    <!-- Edit Modal -->
                     <div class="modal fade" id="editModal" tabindex="-1">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
@@ -394,8 +385,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- End Edit Modal -->
-                    <!-- Delete Modal -->
                     <div class="modal fade" id="deleteModal" tabindex="-1">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -417,55 +406,55 @@
                             </div>
                         </div>
                     </div>
-                    <!-- End Delete Modal -->
-                </div>
+                    </div>
             </div>
         </div>
 
-        <!-- Bootstrap JS and dependencies -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
         <script>
-       // Llenar el modal de edición con los datos de la cita seleccionada
-       document.querySelectorAll('.edit-btn').forEach(function (btn) {
-           btn.addEventListener('click', function () {
-               const tr = btn.closest('tr');
-               const tds = tr.querySelectorAll('td');
-               document.getElementById('editIdCita').value = tds[0].textContent.trim();
-               document.getElementById('editEmpleado').value = tds[1].textContent.trim();
-               document.getElementById('editServicio').value = tds[2].textContent.trim();
-               document.getElementById('editSede').value = tds[3].textContent.trim();
+            // Llenar el modal de edición con los datos de la cita seleccionada
+            document.querySelectorAll('.edit-btn').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    const tr = btn.closest('tr');
+                    const tds = tr.querySelectorAll('td');
 
-               // Fecha: convertir a formato yyyy-MM-dd si viene con hora
-               let fecha = tds[4].textContent.trim();
-               if (fecha.length > 10)
-                   fecha = fecha.substring(0, 10);
-               document.getElementById('editFecha').value = fecha;
+                    // Al quitar la columna ID, los índices de los TD cambian
+                    document.getElementById('editIdCita').value = btn.getAttribute('data-id'); // Obtener el ID desde data-id del botón
+                    document.getElementById('editEmpleado').value = tds[0].textContent.trim();
+                    document.getElementById('editServicio').value = tds[1].textContent.trim();
+                    document.getElementById('editSede').value = tds[2].textContent.trim();
 
-               // Hora inicio y fin: convertir a formato HH:mm si viene con segundos
-               let horaInicio = tds[5].textContent.trim();
-               if (horaInicio.length > 5)
-                   horaInicio = horaInicio.substring(0, 5);
-               document.getElementById('editHoraInicio').value = horaInicio;
+                    // Fecha: convertir a formato YYYY-MM-DD para el input type="date"
+                    let fechaOriginal = tds[3].textContent.trim();
+                    let partesFecha = fechaOriginal.split('/'); // Divide por '/'
+                    let fechaFormatoISO = `${partesFecha[2]}-${partesFecha[1]}-${partesFecha[0]}`; // Reordena a YYYY-MM-DD
+                    document.getElementById('editFecha').value = fechaFormatoISO;
 
-               let horaFin = tds[6].textContent.trim();
-               if (horaFin.length > 5)
-                   horaFin = horaFin.substring(0, 5);
-               document.getElementById('editHoraFin').value = horaFin;
+                    // Hora inicio y fin: convertir a formato HH:mm si viene con segundos
+                    let horaInicio = tds[4].textContent.trim();
+                    if (horaInicio.length > 5)
+                        horaInicio = horaInicio.substring(0, 5);
+                    document.getElementById('editHoraInicio').value = horaInicio;
 
-               document.getElementById('editClienteNombre').value = tds[7].textContent.trim();
-               // Estado: busca el texto interno del span
-               var estado = tds[8].querySelector('span').textContent.trim();
-               document.getElementById('editEstado').value = estado;
-           });
-       });
+                    let horaFin = tds[5].textContent.trim();
+                    if (horaFin.length > 5)
+                        horaFin = horaFin.substring(0, 5);
+                    document.getElementById('editHoraFin').value = horaFin;
 
-       // Llenar el id de cita en el modal de eliminar
-       document.querySelectorAll('.delete-btn').forEach(function (btn) {
-           btn.addEventListener('click', function () {
-               document.getElementById('deleteIdCita').value = btn.getAttribute('data-id');
-           });
-       });
+                    document.getElementById('editClienteNombre').value = tds[6].textContent.trim();
+                    // Estado: busca el texto interno del span
+                    var estado = tds[7].querySelector('span').textContent.trim();
+                    document.getElementById('editEstado').value = estado;
+                });
+            });
+
+            // Llenar el id de cita en el modal de eliminar
+            document.querySelectorAll('.delete-btn').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    document.getElementById('deleteIdCita').value = btn.getAttribute('data-id');
+                });
+            });
         </script>
     </body>
 </html>
