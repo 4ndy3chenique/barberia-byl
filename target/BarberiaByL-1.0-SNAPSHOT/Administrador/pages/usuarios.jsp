@@ -215,7 +215,7 @@
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Número de Teléfono</label>
-                                    <input type="text" name="numero" class="form-control" required>
+                                    <input type="text" name="numero" class="form-control" pattern="^9\d{8}$" title="El número de teléfono debe comenzar con 9 y tener 9 dígitos." required>
                                 </div>
                             </div>
                             <div class="row">
@@ -298,8 +298,8 @@
                                                         <input type="email" name="correo" class="form-control" value="<%= usuario.getEmail()%>" required>
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label class="form-label">Número</label>
-                                                        <input type="text" name="numero" class="form-control" value="<%= usuario.getNumero()%>" required>
+                                                        <label class="form-label">Telefono</label>
+                                                        <input type="text" name="numero" class="form-control" value="<%= usuario.getNumero()%>" pattern="^9\d{8}$" title="El número de teléfono debe comenzar con 9 y tener 9 dígitos." required>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label class="form-label">Nueva Contraseña</label>

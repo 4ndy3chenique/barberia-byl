@@ -10,9 +10,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Gestión de Productos</title>
-        <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Font Awesome for icons -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
         <style>
             :root {
@@ -162,7 +160,6 @@
     <body>
         <div class="container-fluid">
             <div class="row">
-                <!-- Sidebar -->
                 <div class="col-md-2 sidebar">
                     <div class="logo text-center my-4">
                         <img src="../../Administrador/img/barber-logo.jpg" alt="Logo" class="img-fluid rounded-circle" style="width: 80px;">
@@ -204,8 +201,8 @@
                             </a>
                         </li>
                         <li class="nav-item mt-5">
-                            <a href="<%= request.getContextPath()%>/logout" 
-                               class="nav-link" 
+                            <a href="<%= request.getContextPath()%>/logout"
+                               class="nav-link"
                                onclick="return confirm('¿Estás seguro de que deseas cerrar sesión?');">
                                 <i class="fas fa-sign-out-alt"></i> <span>Salir</span>
                             </a>
@@ -213,17 +210,14 @@
                         </li>
                     </ul>
                 </div>
-                <!-- Main Content -->
                 <div class="col-md-10 main-content">
                     <h1 class="my-4">Gestión de Productos</h1>
 
-                    <!-- Botón para reporte de servicios -->
                     <div class="mb-4">
                         <a href="reportedeproductosmassolicitados.jsp" class="btn btn-secondary">
                             <i class="fas fa-file-pdf"></i> Ver Reporte de Productos
                         </a>
                     </div>
-                    <!-- Formulario para crear producto -->
                     <div class="card-form">
                         <h2 class="mb-4">Crear Producto</h2>
                         <form action="${pageContext.request.contextPath}/ProductoServlet" method="post">
@@ -241,11 +235,17 @@
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Precio</label>
-                                    <input type="number" name="precio" class="form-control" step="0.01" required>
+                                    <div class="input-group">
+                                        <span class="input-group-text">S/.</span>
+                                        <input type="number" name="precio" class="form-control" step="0.01" required>
+                                    </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Cantidad</label>
-                                    <input type="number" name="stock" class="form-control" required>
+                                    <div class="input-group">
+                                        <input type="number" name="stock" class="form-control" required>
+                                        <span class="input-group-text">Unidades</span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -262,13 +262,11 @@
                             </button>
                         </form>
                     </div>
-                    <!-- Tabla de productos -->
                     <div class="card table-responsive">
                         <div class="barra-titulo">Lista de Productos</div>
                         <table class="table table-striped table-hover mb-0">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Descripción</th>
                                     <th>Precio</th>
@@ -280,19 +278,18 @@
                             <tbody>
                                 <% for (Producto producto : productos) {%>
                                 <tr>
-                                    <td><%= producto.getId()%></td>
                                     <td><%= producto.getNombre()%></td>
                                     <td><%= producto.getDescripcion()%></td>
-                                    <td><%= producto.getPrecio()%></td>
-                                    <td><%= producto.getStock()%></td>
+                                    <td>S/. <%= String.format("%.2f", producto.getPrecio())%></td>
+                                    <td><%= producto.getStock()%> Unidades</td>
                                     <td><%= producto.getSede()%></td>
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <!-- Editar Producto ABRE MODAL -->
-                                            <button type="button" class="btn btn-warning btn-action" data-bs-toggle="modal" data-bs-target="#editModal<%= producto.getId()%>">
+                                            <%-- Botón de Editar (cambiado a btn-info para azul claro) --%>
+                                            <button type="button" class="btn btn-info btn-action" data-bs-toggle="modal" data-bs-target="#editModal<%= producto.getId()%>">
                                                 <i class="fas fa-edit"></i>
                                             </button>
-                                            <!-- Eliminar Producto -->
+                                            <%-- Botón de Eliminar (mantiene btn-danger para rojo) --%>
                                             <form action="${pageContext.request.contextPath}/ProductoServlet" method="post" class="d-inline">
                                                 <input type="hidden" name="accion" value="eliminar">
                                                 <input type="hidden" name="id" value="<%= producto.getId()%>">
@@ -301,7 +298,6 @@
                                                 </button>
                                             </form>
                                         </div>
-                                        <!-- Modal de edición para este producto -->
                                         <div class="modal fade" id="editModal<%= producto.getId()%>" tabindex="-1" aria-labelledby="editModalLabel<%= producto.getId()%>" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -323,11 +319,17 @@
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label class="form-label">Precio</label>
-                                                                <input type="number" name="precio" class="form-control" step="0.01" value="<%= producto.getPrecio()%>" required>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-text">S/.</span>
+                                                                    <input type="number" name="precio" class="form-control" step="0.01" value="<%= producto.getPrecio()%>" required>
+                                                                </div>
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label class="form-label">Cantidad</label>
-                                                                <input type="number" name="stock" class="form-control" value="<%= producto.getStock()%>" required>
+                                                                <div class="input-group">
+                                                                    <input type="number" name="stock" class="form-control" value="<%= producto.getStock()%>" required>
+                                                                    <span class="input-group-text">Unidades</span>
+                                                                </div>
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label class="form-label">Sede</label>
@@ -357,7 +359,6 @@
             </div>
         </div>
 
-        <!-- Bootstrap JS and dependencies -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

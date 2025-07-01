@@ -1,6 +1,7 @@
 <%@ include file="/proteger.jsp" %>
 <%@ page import="Users.ServicioDAO, Users.Servicio, java.util.LinkedList" %>
-<%    // Obtenemos la lista de servicios desde el DAO
+<%
+    // Obtenemos la lista de servicios desde el DAO
     ServicioDAO servicioDAO = new ServicioDAO();
     LinkedList<Servicio> servicios = servicioDAO.list();
 %>
@@ -139,13 +140,18 @@
                 color: #2c3e50 !important;
                 font-weight: 600;
             }
+            /* Estilo para el prefijo S/. en los input groups */
+            .input-group-text {
+                background-color: #e9ecef; /* Color de fondo del prefijo */
+                border: 1px solid #ced4da; /* Borde del prefijo */
+                color: #495057; /* Color del texto del prefijo */
+            }
 
         </style>
     </head>
     <body>
         <div class="container-fluid">
             <div class="row">
-                <!-- Sidebar -->
                 <div class="col-md-2 sidebar">
                     <div class="logo text-center my-4">
                         <img src="../../Administrador/img/barber-logo.jpg" alt="Logo" class="img-fluid rounded-circle" style="width: 80px;">
@@ -187,8 +193,8 @@
                             </a>
                         </li>
                         <li class="nav-item mt-5">
-                            <a href="<%= request.getContextPath()%>/logout" 
-                               class="nav-link" 
+                            <a href="<%= request.getContextPath()%>/logout"
+                               class="nav-link"
                                onclick="return confirm('¿Estás seguro de que deseas cerrar sesión?');">
                                 <i class="fas fa-sign-out-alt"></i> <span>Salir</span>
                             </a>
@@ -197,16 +203,13 @@
                     </ul>
                 </div>
 
-                <!-- Main Content -->
                 <div class="col-md-10 main-content">
                     <h1 class="my-4">Gestión de Servicios</h1>
-                    <!-- Botón para reporte de servicios -->
                     <div class="mb-4">
                         <a href="reportedeserviciosmassolicitados.jsp" class="btn btn-secondary">
                             <i class="fas fa-file-pdf"></i> Ver Reporte de Servicios
                         </a>
                     </div>
-                    <!-- Formulario para crear servicio -->
                     <div class="card-form">
                         <h2 class="mb-4">Crear Servicio</h2>
                         <form action="${pageContext.request.contextPath}/ServicioServlet" method="post">
@@ -224,7 +227,10 @@
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Precio</label>
-                                    <input type="number" step="0.01" name="precio" class="form-control" required>
+                                    <div class="input-group">
+                                        <span class="input-group-text">S/.</span>
+                                        <input type="number" step="0.01" name="precio" class="form-control" required>
+                                    </div>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary">
@@ -233,7 +239,6 @@
                         </form>
                     </div>
 
-                    <!-- Tabla de servicios -->
                     <div class="card table-responsive">
                         <div class="card-header bg-primary text-white">
                             <h2 class="mb-0">Lista de Servicios</h2>
@@ -241,7 +246,6 @@
                         <table class="table table-striped table-hover mb-0">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Descripción</th>
                                     <th>Precio</th>
@@ -251,18 +255,15 @@
                             <tbody>
                                 <% for (Servicio servicio : servicios) {%>
                                 <tr>
-                                    <td><%= servicio.getIdServicio()%></td>
                                     <td><%= servicio.getNombreservicio()%></td>
                                     <td><%= servicio.getDescripcion()%></td>
-                                    <td><%= servicio.getPrecio()%></td>
+                                    <td>S/. <%= String.format("%.2f", servicio.getPrecio()) %></td>
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <!-- Editar Servicio -->
-                                            <button type="button" class="btn btn-warning btn-action" data-bs-toggle="modal" data-bs-target="#editModal<%= servicio.getIdServicio()%>">
+                                            <button type="button" class="btn btn-info btn-action" data-bs-toggle="modal" data-bs-target="#editModal<%= servicio.getIdServicio()%>">
                                                 <i class="fas fa-edit"></i>
                                             </button>
 
-                                            <!-- Eliminar Servicio -->
                                             <form action="${pageContext.request.contextPath}/ServicioServlet" method="post" class="d-inline">
                                                 <input type="hidden" name="accion" value="eliminar">
                                                 <input type="hidden" name="id" value="<%= servicio.getIdServicio()%>">
@@ -274,8 +275,7 @@
                                     </td>
                                 </tr>
 
-                                <!-- Modal para Editar Servicio -->
-                            <div class="modal fade" id="editModal<%= servicio.getIdServicio()%>" tabindex="-1" aria-labelledby="editModalLabel<%= servicio.getIdServicio()%>" aria-hidden="true">
+                                <div class="modal fade" id="editModal<%= servicio.getIdServicio()%>" tabindex="-1" aria-labelledby="editModalLabel<%= servicio.getIdServicio()%>" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -296,7 +296,10 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Precio</label>
-                                                    <input type="number" step="0.01" name="precio" class="form-control" value="<%= servicio.getPrecio()%>" required>
+                                                    <div class="input-group">
+                                                        <span class="input-group-text">S/.</span>
+                                                        <input type="number" step="0.01" name="precio" class="form-control" value="<%= servicio.getPrecio()%>" required>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -306,8 +309,8 @@
                                         </form>
                                     </div>
                                 </div>
-                            </div>
-                            <% }%>
+                                </div>
+                                <% }%>
                             </tbody>
                         </table>
                     </div>
@@ -315,7 +318,6 @@
             </div>
         </div>
 
-        <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

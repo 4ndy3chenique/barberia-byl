@@ -74,7 +74,6 @@
                 border-radius: 50%;
             }
 
-
             .main-content {
                 margin-left: 250px;
                 padding: 20px;
@@ -82,7 +81,7 @@
             }
 
             .card-form,
-            .table-empleados {
+            .table-empleados { /* This class is not used in the HTML for the table. Consider using .card for consistency if it's meant to style tables. */
                 background-color: white;
                 border-radius: 10px;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -90,24 +89,31 @@
                 padding: 20px;
             }
 
+            /* The table itself is within a .card, so you might want to adjust these selectors if table-empleados was intended for the table card. */
             .card-form h2,
-            .table-empleados h2 {
+            .table-empleados h2 { /* This applies to the card holding the table too because the table is within a .card */
                 color: var(--primary-color);
             }
 
-            .table-empleados thead {
+            .table-striped thead { /* Changed from .table-empleados thead to target .table-striped */
                 background-color: var(--primary-color);
                 color: white;
             }
 
-            .table-empleados th,
-            .table-empleados td {
+            .table-striped th, /* Changed from .table-empleados th to target .table-striped */
+            .table-striped td { /* Changed from .table-empleados td to target .table-striped */
                 vertical-align: middle;
             }
 
-            .btn-action {
-                margin: 0 5px;
+            /* Estilo para los botones de acción en la tabla */
+            .action-buttons .btn {
+                margin-right: 8px; /* Espacio entre los botones */
             }
+
+            .action-buttons .btn:last-child {
+                margin-right: 0; /* No hay margen a la derecha para el último botón */
+            }
+
 
             @media (max-width: 768px) {
                 .sidebar {
@@ -146,7 +152,6 @@
             .modal-content label {
                 color: #222 !important;
             }
-
         </style>
     </head>
     <body>
@@ -207,7 +212,7 @@
                     <h1 class="my-4">Gestión de Citas</h1>
                     <div class="card-form">
                         <h2 class="mb-4">Crear Cita</h2>
-                        <form action="${pageContext.request.contextPath}/CitaServlet" method="post">
+                        <form action="${pageContext.request.contextPath}/CitaServlet" method="post" id="createCitaForm">
                             <input type="hidden" name="accion" value="crear">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
@@ -226,17 +231,17 @@
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Fecha</label>
-                                    <input type="date" name="fecha" class="form-control" required>
+                                    <input type="date" name="fecha" id="createFecha" class="form-control" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Hora Inicio</label>
-                                    <input type="time" name="horaInicio" class="form-control" required>
+                                    <input type="time" name="horaInicio" id="createHoraInicio" class="form-control" required>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Hora Fin</label>
-                                    <input type="time" name="horaFin" class="form-control" required>
+                                    <input type="time" name="horaFin" id="createHoraFin" class="form-control" required>
                                 </div>
                             </div>
                             <div class="row">
@@ -308,11 +313,11 @@
                                         <span class="<%= estadoClass%>"><%= cita.getEstado()%></span>
                                     </td>
                                     <td>
-                                        <div class="btn-group" role="group">
-                                            <button class="btn btn-sm btn-info edit-btn" data-id="<%= cita.getIdCita()%>" data-bs-toggle="modal" data-bs-target="#editModal">
+                                        <div class="action-buttons">
+                                            <button class="btn btn-info edit-btn" data-id="<%= cita.getIdCita()%>" data-bs-toggle="modal" data-bs-target="#editModal">
                                                 <i class="fas fa-edit"></i>
                                             </button>
-                                            <button class="btn btn-sm btn-danger delete-btn" data-id="<%= cita.getIdCita()%>" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                            <button class="btn btn-danger delete-btn" data-id="<%= cita.getIdCita()%>" data-bs-toggle="modal" data-bs-target="#deleteModal">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </div>
@@ -330,7 +335,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="${pageContext.request.contextPath}/CitaServlet" method="post">
+                                    <form action="${pageContext.request.contextPath}/CitaServlet" method="post" id="editCitaForm">
                                         <input type="hidden" name="accion" value="actualizar">
                                         <input type="hidden" name="idCita" id="editIdCita">
                                         <div class="row">
@@ -406,30 +411,133 @@
                             </div>
                         </div>
                     </div>
-                    </div>
+                </div>
             </div>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
         <script>
+            // Función para obtener la fecha de hoy en formato YYYY-MM-DD
+            function getTodayDate() {
+                const today = new Date();
+                const year = today.getFullYear();
+                const month = String(today.getMonth() + 1).padStart(2, '0'); // Meses son 0-11
+                const day = String(today.getDate()).padStart(2, '0');
+                return `${year}-${month}-${day}`;
+            }
+
+            // Función para obtener la hora actual en formato HH:mm
+            function getCurrentTime() {
+                const now = new Date();
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                return `${hours}:${minutes}`;
+            }
+
+            // Setear la fecha mínima para el campo de "Fecha" al crear cita
+            document.addEventListener('DOMContentLoaded', function() {
+                const createFechaInput = document.getElementById('createFecha');
+                if (createFechaInput) {
+                    createFechaInput.min = getTodayDate();
+                }
+
+                // Setear la hora de inicio por defecto a la hora actual al crear cita
+                const createHoraInicioInput = document.getElementById('createHoraInicio');
+                if (createHoraInicioInput) {
+                    createHoraInicioInput.value = getCurrentTime();
+                }
+            });
+
+            // Validar la fecha y hora al enviar el formulario de creación
+            document.getElementById('createCitaForm').addEventListener('submit', function(event) {
+                const fechaInput = document.getElementById('createFecha');
+                const horaInicioInput = document.getElementById('createHoraInicio');
+                const horaFinInput = document.getElementById('createHoraFin');
+
+                const selectedDate = new Date(fechaInput.value);
+                const today = new Date();
+                today.setHours(0, 0, 0, 0); // Resetear hora para comparar solo la fecha
+
+                // Validar que la fecha no sea anterior a hoy
+                if (selectedDate < today) {
+                    alert('La fecha de la cita no puede ser anterior a hoy.');
+                    event.preventDefault();
+                    return;
+                }
+
+                // Si la fecha es hoy, validar que la hora de inicio no sea anterior a la hora actual
+                if (selectedDate.getTime() === today.getTime()) {
+                    const currentTime = getCurrentTime();
+                    if (horaInicioInput.value < currentTime) {
+                        alert('La hora de inicio no puede ser anterior a la hora actual para una cita hoy.');
+                        event.preventDefault();
+                        return;
+                    }
+                }
+
+                // Validar que la hora de fin sea posterior a la hora de inicio
+                if (horaFinInput.value <= horaInicioInput.value) {
+                    alert('La hora de fin debe ser posterior a la hora de inicio.');
+                    event.preventDefault();
+                    return;
+                }
+            });
+
+            // Validar la fecha y hora al enviar el formulario de edición
+            document.getElementById('editCitaForm').addEventListener('submit', function(event) {
+                const fechaInput = document.getElementById('editFecha');
+                const horaInicioInput = document.getElementById('editHoraInicio');
+                const horaFinInput = document.getElementById('editHoraFin');
+
+                const selectedDate = new Date(fechaInput.value);
+                const today = new Date();
+                today.setHours(0, 0, 0, 0); // Resetear hora para comparar solo la fecha
+
+                // Validar que la fecha no sea anterior a hoy
+                if (selectedDate < today) {
+                    alert('La fecha de la cita no puede ser anterior a hoy.');
+                    event.preventDefault();
+                    return;
+                }
+
+                // Si la fecha es hoy, validar que la hora de inicio no sea anterior a la hora actual
+                if (selectedDate.getTime() === today.getTime()) {
+                    const currentTime = getCurrentTime();
+                    if (horaInicioInput.value < currentTime) {
+                        alert('La hora de inicio no puede ser anterior a la hora actual para una cita hoy.');
+                        event.preventDefault();
+                        return;
+                    }
+                }
+
+                // Validar que la hora de fin sea posterior a la hora de inicio
+                if (horaFinInput.value <= horaInicioInput.value) {
+                    alert('La hora de fin debe ser posterior a la hora de inicio.');
+                    event.preventDefault();
+                    return;
+                }
+            });
+
             // Llenar el modal de edición con los datos de la cita seleccionada
             document.querySelectorAll('.edit-btn').forEach(function (btn) {
                 btn.addEventListener('click', function () {
                     const tr = btn.closest('tr');
                     const tds = tr.querySelectorAll('td');
 
-                    // Al quitar la columna ID, los índices de los TD cambian
-                    document.getElementById('editIdCita').value = btn.getAttribute('data-id'); // Obtener el ID desde data-id del botón
+                    document.getElementById('editIdCita').value = btn.getAttribute('data-id');
                     document.getElementById('editEmpleado').value = tds[0].textContent.trim();
                     document.getElementById('editServicio').value = tds[1].textContent.trim();
                     document.getElementById('editSede').value = tds[2].textContent.trim();
 
                     // Fecha: convertir a formato YYYY-MM-DD para el input type="date"
                     let fechaOriginal = tds[3].textContent.trim();
-                    let partesFecha = fechaOriginal.split('/'); // Divide por '/'
-                    let fechaFormatoISO = `${partesFecha[2]}-${partesFecha[1]}-${partesFecha[0]}`; // Reordena a YYYY-MM-DD
+                    let partesFecha = fechaOriginal.split('/');
+                    let fechaFormatoISO = `${partesFecha[2]}-${partesFecha[1]}-${partesFecha[0]}`;
                     document.getElementById('editFecha').value = fechaFormatoISO;
+
+                    // Setear la fecha mínima para el campo de "Fecha" al editar cita
+                    document.getElementById('editFecha').min = getTodayDate();
 
                     // Hora inicio y fin: convertir a formato HH:mm si viene con segundos
                     let horaInicio = tds[4].textContent.trim();
@@ -443,7 +551,6 @@
                     document.getElementById('editHoraFin').value = horaFin;
 
                     document.getElementById('editClienteNombre').value = tds[6].textContent.trim();
-                    // Estado: busca el texto interno del span
                     var estado = tds[7].querySelector('span').textContent.trim();
                     document.getElementById('editEstado').value = estado;
                 });

@@ -1,6 +1,7 @@
 <%@ include file="/proteger.jsp" %>
 <%@ page import="Users.ProveedorDAO, Users.Proveedor, java.util.LinkedList" %>
-<%    // Obtenemos la lista de proveedores desde el DAO
+<%
+    // Obtenemos la lista de proveedores desde el DAO
     ProveedorDAO proveedorDAO = new ProveedorDAO();
     LinkedList<Proveedor> proveedores = proveedorDAO.list();
 %>
@@ -10,9 +11,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Gestión de Proveedores</title>
-        <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Font Awesome for icons -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
         <style>
             :root {
@@ -79,7 +78,7 @@
             }
 
             .card-form,
-            .table-empleados {
+            .table-empleados { /* También aplica a .table-proveedores si usas esa clase para la tabla */
                 background-color: white;
                 border-radius: 10px;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -88,17 +87,17 @@
             }
 
             .card-form h2,
-            .table-empleados h2 {
+            .table-empleados h2 { /* Y a .table-proveedores h2 */
                 color: var(--primary-color);
             }
 
-            .table-empleados thead {
+            .table-empleados thead { /* Y a .table-proveedores thead */
                 background-color: var(--primary-color);
                 color: white;
             }
 
-            .table-empleados th,
-            .table-empleados td {
+            .table-empleados th, /* Y a .table-proveedores th */
+            .table-empleados td { /* Y a .table-proveedores td */
                 vertical-align: middle;
             }
 
@@ -145,7 +144,6 @@
     <body>
         <div class="container-fluid">
             <div class="row">
-                <!-- Sidebar -->
                 <div class="col-md-2 sidebar">
                     <div class="logo text-center my-4">
                         <img src="../../Administrador/img/barber-logo.jpg" alt="Logo" class="img-fluid rounded-circle">
@@ -187,8 +185,8 @@
                             </a>
                         </li>
                         <li class="nav-item mt-5">
-                            <a href="<%= request.getContextPath()%>/logout" 
-                               class="nav-link" 
+                            <a href="<%= request.getContextPath()%>/logout"
+                               class="nav-link"
                                onclick="return confirm('¿Estás seguro de que deseas cerrar sesión?');">
                                 <i class="fas fa-sign-out-alt"></i> <span>Salir</span>
                             </a>
@@ -197,11 +195,9 @@
                     </ul>
                 </div>
 
-                <!-- Main Content -->
                 <div class="col-md-10 main-content">
                     <h1 class="my-4">Gestión de Proveedores</h1>
 
-                    <!-- Formulario para crear proveedor -->
                     <div class="card-form">
                         <h2 class="mb-4">Crear Proveedor</h2>
                         <form action="${pageContext.request.contextPath}/ProveedorServlet" method="post">
@@ -219,7 +215,11 @@
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Teléfono</label>
-                                    <input type="text" name="telefono" class="form-control" required>
+                                    <input type="text" name="telefono" class="form-control"
+                                           pattern="^9\d{8}$"
+                                           maxlength="9"
+                                           title="El teléfono debe empezar con 9 y tener 9 dígitos."
+                                           required>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Dirección</label>
@@ -235,7 +235,6 @@
                             </button>
                         </form>
                     </div>
-                    <!-- Tabla de proveedores -->
                     <div class="card table-responsive">
                         <div class="card-header bg-primary text-white">
                             <h2 class="mb-0">Lista de Proveedores</h2>
@@ -243,7 +242,6 @@
                         <table class="table table-striped table-hover mb-0">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Nombre</th>
                                     <th>RUC</th>
                                     <th>Teléfono</th>
@@ -255,7 +253,6 @@
                             <tbody>
                                 <% for (Proveedor proveedor : proveedores) {%>
                                 <tr>
-                                    <td><%= proveedor.getIdProveedor()%></td>
                                     <td><%= proveedor.getNombre()%></td>
                                     <td><%= proveedor.getRuc()%></td>
                                     <td><%= proveedor.getTelefono()%></td>
@@ -263,11 +260,9 @@
                                     <td><%= proveedor.getDescripcion()%></td>
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <!-- Botón para Editar Proveedor -->
-                                            <button type="button" class="btn btn-warning btn-action" data-bs-toggle="modal" data-bs-target="#editModal<%= proveedor.getIdProveedor()%>">
+                                            <button type="button" class="btn btn-info btn-action" data-bs-toggle="modal" data-bs-target="#editModal<%= proveedor.getIdProveedor()%>">
                                                 <i class="fas fa-edit"></i>
                                             </button>
-                                            <!-- Botón para Eliminar Proveedor -->
                                             <form action="${pageContext.request.contextPath}/ProveedorServlet" method="post" class="d-inline">
                                                 <input type="hidden" name="accion" value="eliminar">
                                                 <input type="hidden" name="idProveedor" value="<%= proveedor.getIdProveedor()%>">
@@ -278,8 +273,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <!-- Modal para editar proveedor -->
-                            <div class="modal fade" id="editModal<%= proveedor.getIdProveedor()%>" tabindex="-1">
+                                <div class="modal fade" id="editModal<%= proveedor.getIdProveedor()%>" tabindex="-1">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -300,7 +294,11 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Teléfono</label>
-                                                    <input type="text" name="telefono" class="form-control" value="<%= proveedor.getTelefono()%>" required>
+                                                    <input type="text" name="telefono" class="form-control"
+                                                           pattern="^9\d{8}$"
+                                                           maxlength="9"
+                                                           title="El teléfono debe empezar con 9 y tener 9 dígitos."
+                                                           value="<%= proveedor.getTelefono()%>" required>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Dirección</label>
@@ -318,8 +316,8 @@
                                         </form>
                                     </div>
                                 </div>
-                            </div>
-                            <% }%>
+                                </div>
+                                <% }%>
                             </tbody>
                         </table>
                     </div>
@@ -327,7 +325,6 @@
             </div>
         </div>
 
-        <!-- Bootstrap JS and dependencies -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

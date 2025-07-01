@@ -1,6 +1,7 @@
 <%@ include file="/proteger.jsp" %>
 <%@ page import="Users.EmpleadoDAO, Users.Empleado, java.util.LinkedList" %>
-<%    EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+<%
+    EmpleadoDAO empleadoDAO = new EmpleadoDAO();
     LinkedList<Empleado> empleados = empleadoDAO.list();
 %>
 <!DOCTYPE html>
@@ -10,9 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Gestión de Empleados</title>
 
-        <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Font Awesome -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
         <style>
@@ -141,12 +140,27 @@
                 color: #2c3e50 !important;
                 font-weight: 600;
             }
+            /* --- BARRA AZUL ESTILO EMPLEADOS --- */
+            .barra-titulo {
+                background: #1683fa;
+                color: #fff;
+                font-size: 2rem;
+                font-weight: bold;
+                padding: 8px 15px;
+                margin: 0;
+                width: 100%;
+                box-sizing: border-box;
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+                border: 1px solid #aaa;
+                border-bottom: none;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
         </style>
     </head>
     <body>
         <div class="container-fluid">
             <div class="row">
-                <!-- Sidebar -->
                 <div class="col-md-2 sidebar">
                     <div class="logo text-center my-4">
                         <img src="../../Administrador/img/barber-logo.jpg" alt="Logo" class="img-fluid rounded-circle">
@@ -188,8 +202,8 @@
                             </a>
                         </li>
                         <li class="nav-item mt-5">
-                            <a href="<%= request.getContextPath()%>/logout" 
-                               class="nav-link" 
+                            <a href="<%= request.getContextPath()%>/logout"
+                               class="nav-link"
                                onclick="return confirm('¿Estás seguro de que deseas cerrar sesión?');">
                                 <i class="fas fa-sign-out-alt"></i> <span>Salir</span>
                             </a>
@@ -198,7 +212,6 @@
                     </ul>
                 </div>
 
-                <!-- Main Content -->
                 <div class="col-md-10 main-content">
                     <h1 class="my-4">Gestión de Empleados</h1>
 
@@ -208,7 +221,6 @@
                         </a>
                     </div>
 
-                    <!-- Formulario -->
                     <div class="card-form">
                         <h2 class="mb-4">Crear Empleado</h2>
                         <form action="${pageContext.request.contextPath}/EmpleadoServlet" method="post">
@@ -230,7 +242,11 @@
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Teléfono</label>
-                                    <input type="tel" name="telefono" class="form-control" required>
+                                    <input type="tel" name="telefono" class="form-control"
+                                           pattern="9[0-9]{8}"
+                                           title="El número de teléfono debe empezar con 9 y tener 9 dígitos."
+                                           maxlength="9"
+                                           required>
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -243,15 +259,11 @@
                         </form>
                     </div>
 
-                    <!-- Tabla de Empleados -->
                     <div class="card table-responsive">
-                        <div class="card-header bg-primary text-white">
-                            <h2 class="mb-0">Lista de Empleados</h2>
-                        </div>
+                        <div class="barra-titulo">Lista de Empleados</div>
                         <table class="table table-striped table-hover mb-0">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
                                     <th>Correo</th>
@@ -263,7 +275,6 @@
                             <tbody>
                                 <% for (Empleado empleado : empleados) {%>
                                 <tr>
-                                    <td><%= empleado.getId()%></td>
                                     <td><%= empleado.getNombre()%></td>
                                     <td><%= empleado.getApellido()%></td>
                                     <td><%= empleado.getCorreo()%></td>
@@ -271,9 +282,11 @@
                                     <td><%= empleado.getTelefono()%></td>
                                     <td>
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-warning btn-action" data-bs-toggle="modal" data-bs-target="#editModal<%= empleado.getId()%>">
+                                            <%-- Botón de Editar (cambiado a btn-info para azul claro) --%>
+                                            <button type="button" class="btn btn-info btn-action" data-bs-toggle="modal" data-bs-target="#editModal<%= empleado.getId()%>">
                                                 <i class="fas fa-edit"></i>
                                             </button>
+                                            <%-- Botón de Eliminar (mantiene btn-danger para rojo) --%>
                                             <form action="${pageContext.request.contextPath}/EmpleadoServlet" method="post" class="d-inline">
                                                 <input type="hidden" name="accion" value="eliminar">
                                                 <input type="hidden" name="id" value="<%= empleado.getId()%>">
@@ -285,48 +298,52 @@
                                     </td>
                                 </tr>
 
-                                <!-- Modal -->
-                            <div class="modal fade" id="editModal<%= empleado.getId()%>" tabindex="-1">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <form action="${pageContext.request.contextPath}/EmpleadoServlet" method="post">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Editar Empleado</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <input type="hidden" name="accion" value="actualizar">
-                                                <input type="hidden" name="id" value="<%= empleado.getId()%>">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Nombre</label>
-                                                    <input type="text" name="nombre" class="form-control" value="<%= empleado.getNombre()%>" required>
+                                <div class="modal fade" id="editModal<%= empleado.getId()%>" tabindex="-1">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <form action="${pageContext.request.contextPath}/EmpleadoServlet" method="post">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Editar Empleado</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Apellido</label>
-                                                    <input type="text" name="apellido" class="form-control" value="<%= empleado.getApellido()%>" required>
+                                                <div class="modal-body">
+                                                    <input type="hidden" name="accion" value="actualizar">
+                                                    <input type="hidden" name="id" value="<%= empleado.getId()%>">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Nombre</label>
+                                                        <input type="text" name="nombre" class="form-control" value="<%= empleado.getNombre()%>" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Apellido</label>
+                                                        <input type="text" name="apellido" class="form-control" value="<%= empleado.getApellido()%>" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Correo</label>
+                                                        <input type="email" name="correo" class="form-control" value="<%= empleado.getCorreo()%>" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Teléfono</label>
+                                                        <input type="tel" name="telefono" class="form-control"
+                                                               value="<%= empleado.getTelefono()%>"
+                                                               pattern="9[0-9]{8}"
+                                                               title="El número de teléfono debe empezar con 9 y tener 9 dígitos."
+                                                               maxlength="9"
+                                                               required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Especialidad</label>
+                                                        <input type="text" name="especialidad" class="form-control" value="<%= empleado.getEspecialidad()%>" required>
+                                                    </div>
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Correo</label>
-                                                    <input type="email" name="correo" class="form-control" value="<%= empleado.getCorreo()%>" required>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Teléfono</label>
-                                                    <input type="tel" name="telefono" class="form-control" value="<%= empleado.getTelefono()%>" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Especialidad</label>
-                                                    <input type="text" name="especialidad" class="form-control" value="<%= empleado.getEspecialidad()%>" required>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                                            </div>
-                                        </form>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <% }%>
+                                <% }%>
                             </tbody>
                         </table>
                     </div>
@@ -334,7 +351,6 @@
             </div>
         </div>
 
-        <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

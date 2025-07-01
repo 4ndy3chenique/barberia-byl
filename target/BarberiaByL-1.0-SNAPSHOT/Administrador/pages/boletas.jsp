@@ -1,14 +1,14 @@
 <%@ include file="/proteger.jsp" %>
-<%@ page import="Users.BoletasDAO, Users.Boletas, java.util.LinkedList" %>
-<%  
+<%@ page import="Users.BoletasDAO, Users.Boletas, java.util.LinkedList, java.time.LocalDate, java.time.format.DateTimeFormatter" %>
+<%
     BoletasDAO boletasDAO = new BoletasDAO();
     LinkedList<Boletas> boletas = boletasDAO.list();
+    DateTimeFormatter originalFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    DateTimeFormatter newFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 %>
 
 <!DOCTYPE html>
-
 <html lang="es">
-
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,13 +17,16 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
         <style>
-
             :root {
                 --primary-color: #2c3e50;
                 --secondary-color: #e67e22;
                 --accent-color: #ecf0f1;
                 --background-color: #34495e;
                 --highlight-color: #f39c12;
+
+                /* Colores específicos para los botones de acción */
+                --edit-button-bg: #00bcd4; /* Un azul cian, similar al de la imagen */
+                --delete-button-bg: #dc3545; /* Rojo, similar al de la imagen */
             }
 
             body {
@@ -75,7 +78,6 @@
                 border-radius: 50% !important;
             }
 
-
             .main-content {
                 margin-left: 250px;
                 padding: 20px;
@@ -106,9 +108,49 @@
                 vertical-align: middle;
             }
 
-            .btn-action {
-                margin: 0 5px;
+            /* --- INICIO DE ESTILOS PARA LOS BOTONES DE ACCIÓN (EDITAR Y ELIMINAR) --- */
+            .btn-action-custom {
+                width: 40px; /* Ancho fijo para hacerlos cuadrados */
+                height: 40px; /* Alto fijo para hacerlos cuadrados */
+                display: inline-flex; /* Para centrar el ícono vertical y horizontalmente */
+                align-items: center; /* Centrar verticalmente */
+                justify-content: center; /* Centrar horizontalmente */
+                border-radius: 8px; /* Bordes redondeados más pronunciados */
+                border: none; /* Sin borde */
+                cursor: pointer;
+                transition: background-color 0.2s ease;
+                margin: 0 4px; /* Pequeño margen entre ellos */
+                box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Sutil sombra para dar profundidad */
             }
+
+            .btn-action-edit {
+                background-color: var(--edit-button-bg); /* Color azul cian */
+            }
+
+            .btn-action-edit:hover {
+                background-color: #00a4b8; /* Un tono más oscuro al pasar el ratón */
+            }
+
+            .btn-action-delete {
+                background-color: var(--delete-button-bg); /* Color rojo */
+            }
+
+            .btn-action-delete:hover {
+                background-color: #c82333; /* Un tono más oscuro al pasar el ratón */
+            }
+
+            /* Estilos específicos para los iconos dentro de los botones de acción */
+            .btn-action-edit .fas.fa-edit {
+                color: #000; /* Icono de editar negro */
+                font-size: 0.9em; /* Icono de editar más pequeño */
+            }
+
+            .btn-action-delete .fas.fa-trash {
+                font-size: 0.9em; /* Icono de eliminar más pequeño */
+                color: white; /* Aseguramos que el icono de eliminar siga siendo blanco */
+            }
+            /* --- FIN DE ESTILOS PARA LOS BOTONES DE ACCIÓN --- */
+
 
             @media (max-width: 768px) {
                 .sidebar {
@@ -144,30 +186,35 @@
                 color: #2c3e50 !important;
                 font-weight: 600;
             }
+
+            /* --- INICIO DE MODIFICACIONES PARA LOS ESTADOS (AJUSTADO: Fuente, Tamaño, Color, MAYÚSCULAS) --- */
             .status-badge {
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9em;
-            display: inline-block;
-            text-align: center;
-        }
+                padding: 5px 10px;
+                border-radius: .25rem; /* Menos redondeo */
+                font-weight: 700;
+                font-size: 0.8em; /* ¡AJUSTADO! Tamaño más pequeño */
+                line-height: 1;
+                text-align: center;
+                white-space: nowrap;
+                vertical-align: baseline;
+                display: inline-block;
+                color: #fff; /* Asegura que el color de texto sea blanco para todos */
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Mismo tipo de letra del body */
+                text-transform: uppercase; /* ¡Todo en mayúsculas! */
+            }
 
-        .status-pagado {
-            background-color: #28a745;
-            color: white;
-        }
+            .status-pagado {
+                background-color: #28a745; /* Verde */
+            }
 
-        .status-pendiente {
-            background-color: #ffc107; 
-            color: black;
-        }
+            .status-pendiente {
+                background-color: #ffc107; /* Amarillo/Naranja */
+            }
 
-        .status-anulado {
-            background-color: #dc3545;
-            color: white;
-        }
-
+            .status-anulado {
+                background-color: #dc3545; /* Rojo */
+            }
+            /* --- FIN DE MODIFICACIONES PARA LOS ESTADOS --- */
 
         </style>
     </head>
@@ -214,7 +261,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="../../Administrador/pages/empleado.jsp" class="nav-link">
-                        <i class="fas fa-users-cog"></i> <span>Empleados</span>
+                                <i class="fas fa-users-cog"></i> <span>Empleados</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -223,8 +270,8 @@
                             </a>
                         </li>
                         <li class="nav-item mt-5">
-                            <a href="<%= request.getContextPath()%>/logout" 
-                               class="nav-link" 
+                            <a href="<%= request.getContextPath()%>/logout"
+                               class="nav-link"
                                onclick="return confirm('¿Estás seguro de que deseas cerrar sesión?');">
                                 <i class="fas fa-sign-out-alt"></i> <span>Salir</span>
                             </a>
@@ -245,11 +292,9 @@
                         </a>
                     </div>
                     <%
-
                         String errorMensaje = (String) request.getAttribute("errorMensaje");
                         if (errorMensaje != null && !errorMensaje.isEmpty()) {
                     %>
-
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         <i class="fas fa-exclamation-triangle me-2"></i>
                         <%= errorMensaje%>
@@ -322,7 +367,6 @@
                         <table class="table table-striped table-hover mb-0">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Cliente</th>
                                     <th>Fecha</th>
                                     <th>Total Bruto</th>
@@ -334,110 +378,114 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <% for (Boletas boleta : boletas) {%>
+                                <% for (Boletas boleta : boletas) {
+                                    // Formatear la fecha
+                                    LocalDate date = LocalDate.parse(boleta.getFecha().toString(), originalFormatter);
+                                    String formattedDate = date.format(newFormatter);
+                                %>
                                 <tr>
-
-                                    <td><%= boleta.getIdBoleta()%></td>
                                     <td><%= boleta.getCliente()%></td>
-                                    <td><%= boleta.getFecha()%></td>
-                                    <td>S/ <%= boleta.getTotalBruto()%></td>
-                                    <td>S/ <%= boleta.getIgv()%></td>
-                                    <td>S/ <%= boleta.getTotalNeto()%></td>
+                                    <td><%= formattedDate%></td>
+                                    <td>S/ <%= String.format("%.2f", boleta.getTotalBruto())%></td>
+                                    <td>S/ <%= String.format("%.2f", boleta.getIgv())%></td>
+                                    <td>S/ <%= String.format("%.2f", boleta.getTotalNeto())%></td>
                                     <td><%= boleta.getMetodoPago()%></td>
                                     <td>
-                                        <span class="badge status-badge 
-                                              <%= boleta.getEstado().equals("Pagado") ? "status-pagado"
-                                                      : boleta.getEstado().equals("Pendiente") ? "status-pendiente"
-                                                      : "status-anulado"%>">
-                                            <%= boleta.getEstado()%>
+                                        <span class="status-badge
+                                            <%= boleta.getEstado().equals("Pagado") ? "status-pagado"
+                                                : boleta.getEstado().equals("Pendiente") ? "status-pendiente"
+                                                : "status-anulado"%>">
+                                                <%= boleta.getEstado()%>
                                         </span>
                                     </td>
                                     <td>
-                                        <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-sm btn-outline-primary" 
-                                                    data-bs-toggle="modal" 
-                                                    data-bs-target="#editModal<%= boleta.getIdBoleta()%>">
+                                        <div class="d-flex justify-content-center">
+                                            <button type="button" class="btn-action-custom btn-action-edit"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#editModal<%= boleta.getIdBoleta()%>"
+                                                    title="Editar">
                                                 <i class="fas fa-edit"></i>
                                             </button>
-                                            <button type="button" class="btn btn-sm btn-outline-danger" 
-                                                    data-bs-toggle="modal" 
-                                                    data-bs-target="#deleteModal<%= boleta.getIdBoleta()%>">
+                                            <button type="button" class="btn-action-custom btn-action-delete"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#deleteModal<%= boleta.getIdBoleta()%>"
+                                                    title="Eliminar">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </div>
                                     </td>
                                 </tr>
-                            <div class="modal fade" id="editModal<%= boleta.getIdBoleta()%>" tabindex="-1" aria-labelledby="editModalLabel<%= boleta.getIdBoleta()%>" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="editModalLabel<%= boleta.getIdBoleta()%>">Editar Boleta</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form action="${pageContext.request.contextPath}/BoletasServlet" method="post">
-                                                <input type="hidden" name="accion" value="editar">
-                                                <input type="hidden" name="idBoleta" value="<%= boleta.getIdBoleta()%>">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Cliente</label>
-                                                    <input type="text" name="cliente" class="form-control" value="<%= boleta.getCliente()%>" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Fecha</label>
-                                                    <input type="date" name="fecha" class="form-control" value="<%= boleta.getFecha()%>" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Total Bruto</label>
-                                                    <input type="number" name="totalBruto" class="form-control" value="<%= boleta.getTotalBruto()%>" step="0.01" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Método de Pago</label>
-                                                    <select name="metodoPago" class="form-select" required>
-                                                        <option value="">Seleccionar Método de Pago</option>
-                                                        <option value="Efectivo" <%= boleta.getMetodoPago().equals("Efectivo") ? "selected" : ""%>>Efectivo</option>
-                                                        <option value="Tarjeta" <%= boleta.getMetodoPago().equals("Tarjeta") ? "selected" : ""%>>Tarjeta</option>
-                                                        <option value="Transferencia" <%= boleta.getMetodoPago().equals("Transferencia") ? "selected" : ""%>>Transferencia</option>
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Estado</label>
-                                                    <select name="estado" class="form-select" required>
-                                                        <option value="">Seleccionar Estado</option>
-                                                        <option value="Pendiente" <%= boleta.getEstado().equals("Pendiente") ? "selected" : ""%>>Pendiente</option>
-                                                        <option value="Pagado" <%= boleta.getEstado().equals("Pagado") ? "selected" : ""%>>Pagado</option>
-                                                        <option value="Anulado" <%= boleta.getEstado().equals("Anulado") ? "selected" : ""%>>Anulado</option>
-                                                    </select>
-                                                </div>
-                                                <div class="text-end">
-                                                    <button type="submit" class="btn btn-primary">Actualizar Boleta</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal fade" id="deleteModal<%= boleta.getIdBoleta()%>" tabindex="-1" aria-labelledby="deleteModalLabel<%= boleta.getIdBoleta()%>" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="deleteModalLabel<%= boleta.getIdBoleta()%>">Eliminar Boleta</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>¿Estás seguro de que deseas eliminar esta boleta?</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <form action="/Proyecto-Barberia-BYL/BoletasServlet" method="post">
-                                                <input type="hidden" name="accion" value="eliminar">
-                                                <input type="hidden" name="idBoleta" value="<%= boleta.getIdBoleta()%>">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                <button type="submit" class="btn btn-danger">Eliminar</button>
-                                            </form>
+                                <div class="modal fade" id="editModal<%= boleta.getIdBoleta()%>" tabindex="-1" aria-labelledby="editModalLabel<%= boleta.getIdBoleta()%>" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="editModalLabel<%= boleta.getIdBoleta()%>">Editar Boleta</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="${pageContext.request.contextPath}/BoletasServlet" method="post">
+                                                    <input type="hidden" name="accion" value="editar">
+                                                    <input type="hidden" name="idBoleta" value="<%= boleta.getIdBoleta()%>">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Cliente</label>
+                                                        <input type="text" name="cliente" class="form-control" value="<%= boleta.getCliente()%>" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Fecha</label>
+                                                        <input type="date" name="fecha" class="form-control" value="<%= boleta.getFecha()%>" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Total Bruto</label>
+                                                        <input type="number" name="totalBruto" class="form-control" value="<%= boleta.getTotalBruto()%>" step="0.01" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Método de Pago</label>
+                                                        <select name="metodoPago" class="form-select" required>
+                                                            <option value="">Seleccionar Método de Pago</option>
+                                                            <option value="Efectivo" <%= boleta.getMetodoPago().equals("Efectivo") ? "selected" : ""%>>Efectivo</option>
+                                                            <option value="Tarjeta" <%= boleta.getMetodoPago().equals("Tarjeta") ? "selected" : ""%>>Tarjeta</option>
+                                                            <option value="Transferencia" <%= boleta.getMetodoPago().equals("Transferencia") ? "selected" : ""%>>Transferencia</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Estado</label>
+                                                        <select name="estado" class="form-select" required>
+                                                            <option value="">Seleccionar Estado</option>
+                                                            <option value="Pendiente" <%= boleta.getEstado().equals("Pendiente") ? "selected" : ""%>>Pendiente</option>
+                                                            <option value="Pagado" <%= boleta.getEstado().equals("Pagado") ? "selected" : ""%>>Pagado</option>
+                                                            <option value="Anulado" <%= boleta.getEstado().equals("Anulado") ? "selected" : ""%>>Anulado</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <button type="submit" class="btn btn-primary">Actualizar Boleta</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <% }%>
+                                <div class="modal fade" id="deleteModal<%= boleta.getIdBoleta()%>" tabindex="-1" aria-labelledby="deleteModalLabel<%= boleta.getIdBoleta()%>" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteModalLabel<%= boleta.getIdBoleta()%>">Eliminar Boleta</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>¿Estás seguro de que deseas eliminar esta boleta?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <form action="${pageContext.request.contextPath}/BoletasServlet" method="post">
+                                                    <input type="hidden" name="accion" value="eliminar">
+                                                    <input type="hidden" name="idBoleta" value="<%= boleta.getIdBoleta()%>">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% }%>
                             </tbody>
                         </table>
                     </div>
