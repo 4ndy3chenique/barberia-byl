@@ -102,8 +102,13 @@
                 vertical-align: middle;
             }
 
-            .btn-action {
-                margin: 0 5px;
+            /* Estilo para los botones de acción en la tabla */
+            .action-buttons .btn {
+                margin-right: 8px; /* Espacio entre los botones */
+            }
+
+            .action-buttons .btn:last-child {
+                margin-right: 0; /* No hay margen a la derecha para el último botón */
             }
 
             @media (max-width: 768px) {
@@ -259,15 +264,15 @@
                                     <td><%= servicio.getDescripcion()%></td>
                                     <td>S/. <%= String.format("%.2f", servicio.getPrecio()) %></td>
                                     <td>
-                                        <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-info btn-action" data-bs-toggle="modal" data-bs-target="#editModal<%= servicio.getIdServicio()%>">
+                                        <div class="action-buttons">
+                                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editModal<%= servicio.getIdServicio()%>">
                                                 <i class="fas fa-edit"></i>
                                             </button>
 
                                             <form action="${pageContext.request.contextPath}/ServicioServlet" method="post" class="d-inline">
                                                 <input type="hidden" name="accion" value="eliminar">
                                                 <input type="hidden" name="id" value="<%= servicio.getIdServicio()%>">
-                                                <button type="submit" class="btn btn-danger btn-action" onclick="return confirm('¿Estás seguro de eliminar este servicio?');">
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar este servicio?');">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>

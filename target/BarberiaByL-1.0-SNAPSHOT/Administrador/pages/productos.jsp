@@ -285,15 +285,15 @@
                                     <td><%= producto.getSede()%></td>
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <%-- Botón de Editar (cambiado a btn-info para azul claro) --%>
-                                            <button type="button" class="btn btn-info btn-action" data-bs-toggle="modal" data-bs-target="#editModal<%= producto.getId()%>">
+                                            <%-- Botón de Editar (ahora con clase 'rounded') --%>
+                                            <button type="button" class="btn btn-info btn-action rounded" data-bs-toggle="modal" data-bs-target="#editModal<%= producto.getId()%>">
                                                 <i class="fas fa-edit"></i>
                                             </button>
-                                            <%-- Botón de Eliminar (mantiene btn-danger para rojo) --%>
+                                            <%-- Botón de Eliminar (ahora con clase 'rounded') --%>
                                             <form action="${pageContext.request.contextPath}/ProductoServlet" method="post" class="d-inline">
                                                 <input type="hidden" name="accion" value="eliminar">
                                                 <input type="hidden" name="id" value="<%= producto.getId()%>">
-                                                <button type="submit" class="btn btn-danger btn-action" onclick="return confirm('¿Estás seguro de eliminar este producto?');">
+                                                <button type="submit" class="btn btn-danger btn-action rounded" onclick="return confirm('¿Estás seguro de eliminar este producto?');">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>

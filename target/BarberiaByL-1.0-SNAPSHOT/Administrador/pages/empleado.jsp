@@ -282,15 +282,15 @@
                                     <td><%= empleado.getTelefono()%></td>
                                     <td>
                                         <div class="btn-group">
-                                            <%-- Botón de Editar (cambiado a btn-info para azul claro) --%>
-                                            <button type="button" class="btn btn-info btn-action" data-bs-toggle="modal" data-bs-target="#editModal<%= empleado.getId()%>">
+                                            <%-- Botón de Editar (cambiado a btn-info para azul claro y añadido 'rounded') --%>
+                                            <button type="button" class="btn btn-info btn-action rounded" data-bs-toggle="modal" data-bs-target="#editModal<%= empleado.getId()%>">
                                                 <i class="fas fa-edit"></i>
                                             </button>
-                                            <%-- Botón de Eliminar (mantiene btn-danger para rojo) --%>
+                                            <%-- Botón de Eliminar (mantiene btn-danger para rojo y añadido 'rounded') --%>
                                             <form action="${pageContext.request.contextPath}/EmpleadoServlet" method="post" class="d-inline">
                                                 <input type="hidden" name="accion" value="eliminar">
                                                 <input type="hidden" name="id" value="<%= empleado.getId()%>">
-                                                <button type="submit" class="btn btn-danger btn-action" onclick="return confirm('¿Estás seguro de eliminar este empleado?');">
+                                                <button type="submit" class="btn btn-danger btn-action rounded" onclick="return confirm('¿Estás seguro de eliminar este empleado?');">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>
