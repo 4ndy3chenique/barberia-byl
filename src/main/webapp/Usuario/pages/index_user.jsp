@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Barbería B&L</title>
-        <link rel="stylesheet" href="<%= request.getContextPath()%>/index_user.css">
+        <link rel="stylesheet" href="<%= request.getContextPath()%>/Usuario/css/index_user.css">
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     </head>
@@ -15,7 +15,7 @@
             <div class="container">
                 <!-- Logo -->
                 <a class="navbar-brand" href="index_user.jsp">
-                    <img src="<%= request.getContextPath()%>/ByLogo.svg" alt="Barbería B&L Logo" />
+                    <img src="<%= request.getContextPath()%>/assets/ByLogo.svg" alt="Logo Barbería B&L">
                 </a>
 
                 <!-- Botón para colapsar menú en móviles -->
@@ -41,7 +41,7 @@
                            onclick="return confirm('¿Estás seguro de que deseas cerrar sesión?');">
                             <i class="fas fa-sign-out-alt"></i> Salir
                         </a>
-                        <img src="<%= request.getContextPath()%>/user-icon.png" alt="User Icon" class="rounded-circle" width="40" height="40">
+                        <img src="<%= request.getContextPath()%>/assets/user-icon.png" alt="User Icon" class="rounded-circle" width="40" height="40">
                     </div>
                 </div>
             </div>
