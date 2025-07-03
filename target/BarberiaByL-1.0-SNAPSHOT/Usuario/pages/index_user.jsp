@@ -213,21 +213,21 @@
             </section>
         </main>
 
-        <footer>
-            <div class="footer-content">
-                <div class="footer-left">
-                    <p><strong>Contacto:</strong> +51 997 259 085 / +51 950 758 586</p>
-                    <p><strong>Dirección:</strong> Cdr 3. Calle Teselia, San Carlos, San Juan de Lurigancho</p>
-                    <p><strong>Teléfono:</strong> (123) 456-7890</p>
+        <!-- Footer-->
+        <footer class="footer py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-lg-start">Copyright &copy; Barberia ByL 2025</div>
+                    <div class="col-lg-4 my-3 my-lg-0">
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <a class="link-dark text-decoration-none me-3" href="#!">Politica Privacidad</a>
+                        <a class="link-dark text-decoration-none" href="#!">Informacion</a>
+                    </div>
                 </div>
-                <div class="footer-right">
-                    <p>Cancelaciones con 24 horas de anticipación.</p>
-                    <p>Reembolsos no disponibles.</p>
-                    <p>Diseño web: "Los Terreneitor de San Carlos"</p>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>© 2024 Barbería B&L. Todos los derechos reservados.</p>
             </div>
         </footer>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
