@@ -25,13 +25,13 @@
                 </button>
 
                 <!-- Menú -->
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="index_user.jsp">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="servicios.jsp">Servicios</a></li>
-                        <li class="nav-item"><a class="nav-link" href="productos.jsp">Productos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="sedes.jsp">Sedes</a></li>
-                        <li class="nav-item"><a class="nav-link" href="reservas.jsp">Reservas</a></li>
+                <div class="collapse navbar-collapse w-100 text-center navbar-nav" id="navbarResponsive">
+                    <ul class="navbar-nav  ms-auto py-4 py-lg-0">
+                        <li class="nav-item w-100"><a class="nav-link" href="index_user.jsp">Inicio</a></li>
+                        <li class="nav-item w-100"><a class="nav-link" href="servicios.jsp">Servicios</a></li>
+                        <li class="nav-item w-100"><a class="nav-link" href="productos.jsp">Productos</a></li>
+                        <li class="nav-item w-100"><a class="nav-link" href="sedes.jsp">Sedes</a></li>
+                        <li class="nav-item w-100"><a class="nav-link" href="reservas.jsp">Reservas</a></li>
                     </ul>
 
                     <!-- Usuario / sesión -->
@@ -41,7 +41,7 @@
                            onclick="return confirm('¿Estás seguro de que deseas cerrar sesión?');">
                             <i class="fas fa-sign-out-alt"></i> Salir
                         </a>
-                        <img src="assets/user-icon.png" alt="User Icon" class="rounded-circle" width="40" height="40">
+                        <img src="<%= request.getContextPath()%>/user-icon.png" alt="User Icon" class="rounded-circle" width="40" height="40">
                     </div>
                 </div>
             </div>
