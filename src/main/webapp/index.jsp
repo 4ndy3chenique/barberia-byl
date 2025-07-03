@@ -38,12 +38,10 @@
                         <button id="openLoginModal" class="btn btn-outline-light me-2">Iniciar Sesión</button>
                         <a href="javascript:void(0)" onclick="openModal('registroUsuario')" class="btn btn-light">Registrarse</a>
                     </div>
-
-
-
                 </div>
             </div>
         </nav>
+        
         <!-- Header-->
         <header class="masthead">
             <div class="container">

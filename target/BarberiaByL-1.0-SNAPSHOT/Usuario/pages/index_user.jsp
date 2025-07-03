@@ -401,30 +401,42 @@
         </style>
     </head>
     <body>
-        <header>
-            <div class="logo">
-                <img src="../../assets/logo.png" alt="Barberia B&L Logo">
-                <h1>Barbería B&L</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="servicios.jsp">Servicios</a></li>
-                    <li><a href="productos.jsp">Productos</a></li>
-                    <li><a href="sedes.jsp">Sedes</a></li>
-                    <li><a href="reservas.jsp">Reservas</a></li>
-                </ul>
-            </nav>
-            <div class="user-icon">
-                <a href="<%= request.getContextPath()%>/logout" 
-                   class="nav-link" 
-                   onclick="return confirm('¿Estás seguro de que deseas cerrar sesión?');">
-                    <i class="fas fa-sign-out-alt"></i> <span>Salir</span>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <!-- Logo -->
+                <a class="navbar-brand" href="index.jsp">
+                    <img src="assets/ByLogo.svg" alt="Barbería B&L Logo" />
+                    Barbería B&L
                 </a>
 
-                <img src="../../assets/user-icon.png" alt="User Icon">
+                <!-- Botón para colapsar menú en móviles -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menú
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+
+                <!-- Menú -->
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="index.jsp">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="servicios.jsp">Servicios</a></li>
+                        <li class="nav-item"><a class="nav-link" href="productos.jsp">Productos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="sedes.jsp">Sedes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="reservas.jsp">Reservas</a></li>
+                    </ul>
+
+                    <!-- Usuario / sesión -->
+                    <div class="d-flex align-items-center ms-lg-3">
+                        <a href="<%= request.getContextPath()%>/logout" 
+                           class="btn btn-outline-light me-2"
+                           onclick="return confirm('¿Estás seguro de que deseas cerrar sesión?');">
+                            <i class="fas fa-sign-out-alt"></i> Salir
+                        </a>
+                        <img src="assets/user-icon.png" alt="User Icon" class="rounded-circle" width="40" height="40">
+                    </div>
+                </div>
             </div>
-        </header>
+        </nav>
 
         <main>
             <!-- HERO: Imagen y Nosotros a la par -->
