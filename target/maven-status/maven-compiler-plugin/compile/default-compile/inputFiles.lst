@@ -1,42 +1,42 @@
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\Cita.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\Conexion.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\Empleado.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\solucionesweb\barberiabyl\JakartaRestConfiguration.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\Boletas.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\Producto.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\Servicio.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Proveedores.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\svAdministrador.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\BoletasDAO.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\LoginServlet.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\GenerarReporteBoletasPDF.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\solucionesweb\barberiabyl\resources\JakartaEE10Resource.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\GenerarReporteProductosPDF.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Boleta.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\ProductoDAO.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\TestConnection.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\EmpleadoServlet.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\UsuarioServlet.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\DatabaseConnection.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\Abastecimiento.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\GenerarReporteEspecialidadPDF.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\ProductoServlet.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\Proveedor.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\GenerarReportePDF.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\GenerarReporteServiciosPDF.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Productos.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\LogoutServlet.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\ProveedorServlet.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\Usuario.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\BoletasServlet.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\ContactoProveedor.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\CitaServlet.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\EmpleadoDAO.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\ServicioServlet.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\CitaDAO.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\ServicioDAO.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Servicios.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\ProveedorDAO.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\UsuarioDAO.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\CarritoServlet.java
-D:\Calidad y pruebas de software\barberia-byl\src\main\java\Users\DAO.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\BoletasServlet.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\UsuarioServlet.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\Conexion.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\Producto.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\Usuario.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\Empleado.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\ProveedorServlet.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\GenerarReportePDF.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\EmpleadoServlet.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\solucionesweb\barberiabyl\resources\JakartaEE10Resource.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\TestConnection.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\GenerarReporteBoletasPDF.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\BoletasDAO.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\GenerarReporteEspecialidadPDF.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\ProductoServlet.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\LogoutServlet.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\ServicioServlet.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\ContactoProveedor.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\svAdministrador.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\CitaServlet.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\Servicio.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\DAO.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\Cita.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\Abastecimiento.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\ProductoDAO.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\Proveedor.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\ServicioDAO.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Servicios.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\UsuarioDAO.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\EmpleadoDAO.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\GenerarReporteServiciosPDF.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\GenerarReporteProductosPDF.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\CitaDAO.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Boleta.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\Boletas.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\ProveedorDAO.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\DatabaseConnection.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\solucionesweb\barberiabyl\JakartaRestConfiguration.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\LoginServlet.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Productos.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Proveedores.java
+F:\Calidad(Githud)\barberia-byl\src\main\java\Users\CarritoServlet.java
