@@ -10952,7 +10952,7 @@ header.masthead {
     padding-bottom: 6rem;
     text-align: center;
     color: #fff;
-    background-image: url("./assets/header-bg.jpg");
+    background-image: url("../../assets/herouser.jpg");
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center center;
@@ -11570,7 +11570,6 @@ section#contact form#contactForm :-ms-input-placeholder {
     color: #222 !important; /* Texto negro para opciones */
     background: #fff !important; /* Fondo blanco para opciones */
 }
-
 
 
 

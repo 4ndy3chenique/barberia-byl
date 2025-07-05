@@ -10,167 +10,172 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Servicios | BarberÃ­a B&L</title>
-        <link rel="stylesheet" href="../css/servicios.css">
+        <title>Barbería B&L</title>          
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" />
+        <link rel="stylesheet" href="<%= request.getContextPath()%>/Usuario/css/servicios.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
     </head>
 
     <body>
-
-        <header style="display: flex; flex-direction: row;">  
-            <div class="logo">
-                <img src="../../assets/logo.png" alt="BarberÃ­a B&L Logo">
-                <h1 style="font-size: 35px !important;">BarberÃ­a B&L</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index_user.jsp">Inicio</a></li>
-                    <li><a href="servicios.jsp">Servicios</a></li>
-                    <li><a href="productos.jsp">Productos</a></li>
-                    <li><a href="sedes.jsp">Sedes</a></li>
-                    <li><a href="reservas.jsp">Reservas</a></li>
-                </ul>
-            </nav>
-            <div style="display: flex; flex-direction: row;" class="user-icon">
-                <a href="<%= request.getContextPath()%>/logout" 
-                   class="nav-link" 
-                   onclick="return confirm('Â¿EstÃ¡s seguro de que deseas cerrar sesiÃ³n?');">
-                    <i class="fas fa-sign-out-alt"></i> <span>Salir</span>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-transparent" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="index_user.jsp #page-top">
+                    <img src="<%= request.getContextPath()%>/assets/ByLogo.svg" alt="Logo Barbería B&L">
                 </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse w-100 text-center navbar-nav" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="index_user.jsp">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="servicios.jsp">Servicios</a></li>
+                        <li class="nav-item"><a class="nav-link" href="productos.jsp">Productos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="sedes.jsp">Sedes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="reservas.jsp">Reservas</a></li>
+                    </ul>
+                    <div class="d-flex align-items-center ms-lg-3">
+                        <a href="<%= request.getContextPath()%>/logout" class="btn btn-outline-light me-2"
+                           onclick="return confirm('¿Estás seguro de que deseas cerrar sesión?');">
+                            <i class="fas fa-sign-out-alt"></i> Salir
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
 
-                <img src="../../assets/user-icon.png" alt="User Icon">
+        <header class="masthead">
+            <div class="container text-center">
+                <div class="masthead-subheading">¡Nuestros Servicios!</div>
+                <div class="masthead-heading text-uppercase">Descubre todos los servicios que tenemos para ti en BYL</div>
             </div>
         </header>
 
-        <main class="container my-5">
-            <div class="row">
-                <section class="col-lg-4 col-md-6 servicios-box">
-                    <h2>Servicios Principales</h2>
-
-                    <!-- Corte de Cabello -->
-                    <div class="servicio-item">
-                        <h4>Corte de Cabello</h4>
-                        <div id="carruselCorteCabello" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="../../assets/CorteDeCabello1.png" class="d-block w-100" alt="Corte de Cabello 1">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="../../assets/CorteDeCabello2.png" class="d-block w-100" alt="Corte de Cabello 2">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="../../assets/CorteDeCabello3.png" class="d-block w-100" alt="Corte de Cabello 3">
-                                </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#carruselCorteCabello" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Anterior</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carruselCorteCabello" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Siguiente</span>
-                            </a>
-                        </div>
+        <header class="py-5">
+            <div class="container px-lg-5">
+                <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+                    <div class="m-4 m-lg-5">
+                        <h1 class="display-5 fw-bold">¡Bienvenido a nuestra Barbería!</h1>
+                        <p class="fs-4">Descubre todos los servicios que tenemos para ti. Reserva tu cita y déjate consentir por nuestros expertos.</p>
+                        <a class="btn btn-primary btn-lg" href="reservas.jsp">Reservar ahora</a>
                     </div>
-
-                    <!-- Afeitado ClÃ¡sico -->
-                    <div class="servicio-item">
-                        <h4>Afeitado ClÃ¡sico</h4>
-                        <div id="carruselAfeitadoClasico" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="../../assets/AfeitadoClasico1.png" class="d-block w-100" alt="Afeitado ClÃ¡sico 1">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="../../assets/AfeitadoClasico2.png" class="d-block w-100" alt="Afeitado ClÃ¡sico 2">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="../../assets/AfeitadoClasico3.png" class="d-block w-100" alt="Afeitado ClÃ¡sico 3">
-                                </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#carruselAfeitadoClasico" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Anterior</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carruselAfeitadoClasico" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Siguiente</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Arreglo de Barba -->
-                    <div class="servicio-item">
-                        <h4>Arreglo de Barba</h4>
-                        <div id="carruselArregloBarba" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="../../assets/arreglodebarba1.png" class="d-block w-100" alt="Arreglo de Barba 1">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="../../assets/arreglodebarba2.png" class="d-block w-100" alt="Arreglo de Barba 2">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="../../assets/arreglodebarba3.png" class="d-block w-100" alt="Arreglo de Barba 3">
-                                </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#carruselArregloBarba" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Anterior</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carruselArregloBarba" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Siguiente</span>
-                            </a>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Caja 2: Estilismo Personalizado -->
-                <section class="col-lg-4 col-md-6 servicios-box">
-                    <h2>Estilismo Personalizado</h2>
-                    <div style="display: flex; flex-direction: column; align-items: center; margin-top: 50px;" >
-                        <img style="margin: 10px" src="../../assets/servicios-estilos1.png" class="rounded-circle img-fluid" alt="Estilo 1">
-                        <img style="margin: 10px" src="../../assets/servicios-estilos2.png" class="rounded-circle img-fluid" alt="Estilo 2">
-                        <img style="margin: 10px" src="../../assets/servicios-estilos1.png" class="rounded-circle img-fluid" alt="Estilo 3">
-                        <img style="margin: 10px" src="../../assets/servicios-estilos2.png" class="rounded-circle img-fluid" alt="Estilo 4">
-                    </div>
-                </section>
-
-                <!-- Caja 3: Tratamientos Especiales -->
-                <section class="col-lg-4 col-md-12 servicios-box" >
-                    <h2>Tratamientos Especiales</h2>
-                    <div class="images-servicios-grid" style="display: flex; flex-direction: column; align-items: center; margin-top: 50px;" >
-                        <img style="margin: 10px" src="../../assets/servicios-tratamientos1.png" class="img-fluid" alt="Tratamiento 1">
-                        <img style="margin: 10px" src="../../assets/servicios-tratamiento2.png" class="img-fluid" alt="Tratamiento 2">
-                    </div>
-                </section>
-            </div>
-        </main>
-
-        <!-- Footer -->
-        <footer>
-            <div class="footer-content">
-                <div class="footer-left">
-                    <p>Contacto: +51 997 259 085 / +51 950 758 586</p>
-                    <p>DirecciÃ³n: Cdr 3. Calle Teselia, San Carlos, San Juan de Lurigancho</p>
-                    <p>TelÃ©fono: (123) 456-7890</p>
-                </div>
-                <div class="footer-right">
-                    <p>Cancelaciones con 24 horas de anticipaciÃ³n.</p>
-                    <p>Reembolsos no disponibles.</p>
-                    <p>DiseÃ±o web: "Los Terreneitor de San Carlos"</p>
                 </div>
             </div>
-            <div class="copyright">
-                <p>Â© 2024 BarberÃ­a B&L. Todos los derechos reservados.</p>
+        </header>
+
+        <!-- Sección Servicios -->
+        <section class="pt-4">
+            <div class="container px-lg-5">
+                <!-- Servicios -->
+                <div class="row gx-lg-5">
+                    <div class="col-lg-6 col-xxl-4 mb-5">
+                        <div class="card bg-light border-0 h-100">
+                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
+                                    <i class="bi bi-scissors"></i>
+                                </div>
+                                <h2 class="fs-4 fw-bold">Corte de Cabello</h2>
+                                <p class="mb-0">Un corte moderno y a la medida de tu estilo. Nuestros barberos te dejarán impecable.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xxl-4 mb-5">
+                        <div class="card bg-light border-0 h-100">
+                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
+                                    <i class="bi bi-beard"></i>
+                                </div>
+                                <h2 class="fs-4 fw-bold">Perfilado de Barba</h2>
+                                <p class="mb-0">Define y cuida tu barba para un look elegante y bien cuidado.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xxl-4 mb-5">
+                        <div class="card bg-light border-0 h-100">
+                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
+                                    <i class="bi bi-brush"></i>
+                                </div>
+                                <h2 class="fs-4 fw-bold">Hidratación Capilar</h2>
+                                <p class="mb-0">Tratamientos especiales para que tu cabello luzca sano y fuerte.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xxl-4 mb-5">
+                        <div class="card bg-light border-0 h-100">
+                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
+                                    <i class="bi bi-person-check"></i>
+                                </div>
+                                <h2 class="fs-4 fw-bold">Asesoría de Imagen</h2>
+                                <p class="mb-0">Nuestros expertos te ayudarán a encontrar el estilo que más te favorece.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xxl-4 mb-5">
+                        <div class="card bg-light border-0 h-100">
+                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
+                                    <i class="bi bi-gem"></i>
+                                </div>
+                                <h2 class="fs-4 fw-bold">Afeitado Clásico</h2>
+                                <p class="mb-0">Un servicio tradicional para un acabado perfecto y sensación refrescante.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xxl-4 mb-5">
+                        <div class="card bg-light border-0 h-100">
+                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
+                                    <i class="bi bi-star"></i>
+                                </div>
+                                <h2 class="fs-4 fw-bold">Paquete Premium</h2>
+                                <p class="mb-0">Disfruta de un paquete completo que incluye todos nuestros servicios estrella.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-lg-start">&copy; Barberia ByL 2025</div>
+                    <div class="col-lg-4 my-3 my-lg-0">
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <a class="link-dark text-decoration-none me-3" href="#!">Política Privacidad</a>
+                        <a class="link-dark text-decoration-none" href="#!">Información</a>
+                    </div>
+                </div>
             </div>
         </footer>
+        <script>
+            window.addEventListener('scroll', function () {
+                const navbar = document.getElementById('mainNav');
+                if (window.scrollY > 50) {
+                    navbar.classList.remove('bg-transparent');
+                    navbar.classList.add('bg-dark');
+                } else {
+                    navbar.classList.add('bg-transparent');
+                    navbar.classList.remove('bg-dark');
+                }
+            });
+        </script>
 
-        <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </body>
-
 </html>
