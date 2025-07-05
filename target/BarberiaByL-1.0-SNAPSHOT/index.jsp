@@ -544,7 +544,7 @@
                     <!-- Usuario -->
                     <div class="btn-center-group">
                         <button class="btn-access" onclick="openModal('adminUser')">
-                            <i class="fas fa-user"></i> Ingresar como Usuario
+                            <i class="fas fa-user"></i> Ingresar como Cliente
                         </button>
 
                         <!-- Administrador -->
