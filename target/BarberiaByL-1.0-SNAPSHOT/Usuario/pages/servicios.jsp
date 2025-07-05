@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="<%= request.getContextPath()%>/Usuario/css/servicios.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     </head>
 
     <body>
@@ -50,18 +51,24 @@
             </div>
         </nav>
 
-        <header class="masthead">
+        <header class="masthead position-relative">
             <div class="container text-center">
                 <div class="masthead-subheading">¡Nuestros Servicios!</div>
                 <div class="masthead-heading text-uppercase">Descubre todos los servicios que tenemos para ti en BYL</div>
             </div>
+
+            <!-- Flecha animada -->
+            <div class="scroll-down-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
         </header>
+
 
         <header class="py-5">
             <div class="container px-lg-5">
                 <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
                     <div class="m-4 m-lg-5">
-                        <h1 class="display-5 fw-bold">¡Bienvenido a nuestra Barbería!</h1>
+                        <h1 class="display-5 fw-bold">Nuestros Servicios</h1>
                         <p class="fs-4">Descubre todos los servicios que tenemos para ti. Reserva tu cita y déjate consentir por nuestros expertos.</p>
                         <a class="btn btn-primary btn-lg" href="reservas.jsp">Reservar ahora</a>
                     </div>
@@ -89,7 +96,7 @@
                         <div class="card bg-light border-0 h-100">
                             <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
-                                    <i class="bi bi-beard"></i>
+                                    <i class="bi bi-scissors"></i>
                                 </div>
                                 <h2 class="fs-4 fw-bold">Perfilado de Barba</h2>
                                 <p class="mb-0">Define y cuida tu barba para un look elegante y bien cuidado.</p>

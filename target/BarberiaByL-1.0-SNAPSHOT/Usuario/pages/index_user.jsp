@@ -15,6 +15,8 @@
         <link rel="stylesheet" href="<%= request.getContextPath()%>/Usuario/css/index_user.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
+
+
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-transparent" id="mainNav">
@@ -44,16 +46,22 @@
             </div>
         </nav>
 
-        <header class="masthead">
-            <div class="container">
-                <div class="masthead-subheading">¡Agenda tu experiencia con nosotros!</div>
+        <header class="masthead position-relative">
+            <div class="container text-center">
+                <div class="masthead-subheading">¡Bienvenido a la Barberia ByL!</div>
                 <div class="masthead-heading text-uppercase">Reserva tu cita o explora nuestra tienda en línea.</div>
                 <a class="btn btn-primary btn-xl text-uppercase" href="reservas.jsp">Reservar Cita</a>
-                <a class="btn btn-xl btn-outline-light text-uppercase  fw-bold " href="productos.jsp" style="border-radius: 5px; min-width: 170px; min-height: 70px;">
+                <a class="btn btn-xl btn-outline-light text-uppercase fw-bold" href="productos.jsp" style="border-radius: 5px; min-width: 170px; min-height: 70px;">
                     Ver Productos
                 </a>
             </div>
-        </header>       
+
+            <!-- Flecha animada -->
+            <div class="scroll-down-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </header>
+
 
 
         <!-- Empresas -->
