@@ -2849,8 +2849,8 @@ textarea.form-control-lg {
 
 .btn-primary {
     --bs-btn-color: #fff;
-    --bs-btn-bg: #ffc800;
-    --bs-btn-border-color: #ffc800;
+    --bs-btn-bg: #996600 ;
+    --bs-btn-border-color: transparent;
     --bs-btn-hover-color: #fff;
     --bs-btn-hover-bg: #d9aa00;
     --bs-btn-hover-border-color: #cca000;
@@ -11571,8 +11571,18 @@ section#contact form#contactForm :-ms-input-placeholder {
     background: #fff !important; /* Fondo blanco para opciones */
 }
 
+/*CORRECIONES WAVE */
+#portfolio > .container > .text-center > h3.section-subheading.text-muted {
+    color: #525252 !important; /* Nuevo color para mejorar el contraste */
+}
 
+#team > .container > .text-center > h3.section-subheading.text-muted {
+    color: #525252 !important; /* Nuevo color para mejorar el contraste */
+}
 
+#team p.text-muted {
+    color: #525252 !important; /* Nuevo color para mejorar el contraste */
+}
 
 
 @keyframes fadeInUp {

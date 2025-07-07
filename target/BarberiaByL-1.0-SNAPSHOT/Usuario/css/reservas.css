@@ -23266,6 +23266,11 @@ section#contact form#contactForm :-ms-input-placeholder {
     background-color: #a68804;
 }
 
+.btn-reservar {
+    background-color: #c7a006; 
+    color: #000000; 
+}
+
 @keyframes fadeInUp {
     0% {
         opacity: 0;

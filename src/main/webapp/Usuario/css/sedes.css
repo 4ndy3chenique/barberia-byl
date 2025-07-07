@@ -23198,6 +23198,14 @@ section#contact form#contactForm :-ms-input-placeholder {
     color: #fff;
 }
 
+.btn-primary {
+    background-color: #ffc800; 
+    color: #000000; 
+}
+
+.direccion-sede {
+    color: #555c63; 
+}
 
 @keyframes fadeInUp {
     0% {

@@ -20,7 +20,7 @@
         <!-- Navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top"><img src="assets/ByLogo.svg" alt="..." /></a>
+                <a class="navbar-brand" href="#page-top"><img src="assets/ByLogo.svg" alt="Logo Barbería B&L"/></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
@@ -38,10 +38,12 @@
                         <button id="openLoginModal" class="btn btn-outline-light me-2">Iniciar Sesión</button>
                         <a href="javascript:void(0)" onclick="openModal('registroUsuario')" class="btn btn-light">Registrarse</a>
                     </div>
+
+
+
                 </div>
             </div>
         </nav>
-        
         <!-- Header-->
         <header class="masthead">
             <div class="container">
@@ -55,16 +57,16 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/empresa4.svg" alt="..."  /></a>
+                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/empresa4.svg" alt="Empresa Unique"  /></a>
                     </div>
                     <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/empresa3.svg" alt="..."  /></a>
+                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/empresa3.svg" alt="Empresa Fair Trade"  /></a>
                     </div>
                     <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/empresa2.svg" alt="..." /></a>
+                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/empresa2.svg" alt="Empresa Creative Graphic Design" /></a>
                     </div>
                     <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/empresa6.svg" alt="..." /></a>
+                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/empresa6.svg" alt="Empresa The Museum of Modern Arts" /></a>
                     </div>
                 </div>
             </div>
@@ -134,7 +136,7 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="assets/cortemoderno.jpg" alt="..." />
+                                <img class="img-fluid" src="assets/cortemoderno.jpg" alt="Corte Moderno" />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Corte moderno</div>
@@ -149,7 +151,7 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="assets/corteinfantil.jpg" alt="..." />
+                                <img class="img-fluid" src="assets/corteinfantil.jpg" alt="Corte infantil" />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Corte infantil</div>
@@ -164,7 +166,7 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="assets/perfiladobarba.jpg" alt="..." />
+                                <img class="img-fluid" src="assets/perfiladobarba.jpg" alt="Perfilado de barba" />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Perfilado de barba</div>
@@ -179,7 +181,7 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="assets/disenio.jpg" alt="..." />
+                                <img class="img-fluid" src="assets/disenio.jpg" alt="Diseño Personalizado" />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Diseño personalizado</div>
@@ -194,7 +196,7 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="assets/coloracion.jpg" alt="..." />
+                                <img class="img-fluid" src="assets/coloracion.jpg" alt="Coloración de Cabello" />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Coloración de Cabello</div>
@@ -214,7 +216,7 @@
                 </div>
                 <ul class="timeline">
                     <li>
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/1.jpg" alt="..." /></div>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/1.jpg" alt="Nuestros Primeros Trazos" /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
                                 <h4>2017-2019</h4>
@@ -224,7 +226,7 @@
                         </div>
                     </li>
                     <li class="timeline-inverted">
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/2.jpg" alt="..." /></div>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/2.jpg" alt="Resiliencia en Tiempos Difíciles" /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
                                 <h4>Marzo 2020</h4>
@@ -234,7 +236,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/3.jpg" alt="..." /></div>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/3.jpg" alt="Renovación y Expansión" /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
                                 <h4>Diciembre 2023</h4>
@@ -244,7 +246,7 @@
                         </div>
                     </li>
                     <li class="timeline-inverted">
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/4.jpg" alt="..." /></div>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/4.jpg" alt="El Futuro se Corta Aquí" /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
                                 <h4>Enero 2025</h4>
@@ -277,17 +279,17 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="assets/Lucas.jpg" alt="..." />
+                            <img class="mx-auto rounded-circle" src="assets/Lucas.jpg" alt="Barbero Lucas" />
                             <h4>Lucas</h4>
                             <p class="text-muted">Fade Maestro</p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" ><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" ><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" ><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Perfil de Twitter"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Perfil de Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Perfil de Linkedin"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="assets/Henrry.jpg" alt="..." />
+                            <img class="mx-auto rounded-circle" src="assets/Henrry.jpg" alt="Barbero Henrry" />
                             <h4>Henrry</h4>
                             <p class="text-muted">Barba Precisa</p>
                             <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Twitter Profile"><i class="fab fa-twitter"></i></a>
@@ -297,7 +299,7 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="assets/Gotti.jpg" alt="..." />
+                            <img class="mx-auto rounded-circle" src="assets/Gotti.jpg" alt="Barbero Gotti" />
                             <h4>Gotti</h4>
                             <p class="text-muted">Estilo Urbano</p>
                             <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Twitter Profile"><i class="fab fa-twitter"></i></a>
@@ -387,7 +389,7 @@
                                     <!-- Project details-->
                                     <h2 class="text-uppercase">Corte Clasico</h2>
                                     <p class="item-intro text-muted">Estilo tradicional con acabado profesional.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/corteclasico.jpg" alt="..." />
+                                    <img class="img-fluid d-block mx-auto" src="assets/corteclasico.jpg" alt="Corte Clásico" />
                                     <p>Un corte temporal que nunca pasa de moda. Ideal para quienes buscan elegancia y sobriedad. Realizado con precisión para mantener un estilo limpio, simétrico y prolijo, perfecto para cualquier ocasión.</p>
 
                                     <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
@@ -413,7 +415,7 @@
                                     <!-- Project details-->
                                     <h2 class="text-uppercase">Corte Moderno</h2>
                                     <p class="item-intro text-muted">Cortes con técnicas como low, mid o high fade.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/cortemoderno.jpg" alt="..." />
+                                    <img class="img-fluid d-block mx-auto" src="assets/cortemoderno.jpg" alt="Corte Moderno" />
                                     <p>Estilo urbano con carácter. Incluye técnicas como fade, taper o undercut para un look fresco y actual. Adaptamos cada corte a tu personalidad, siguiendo las últimas tendencias y cuidando cada detalle.</p>
 
                                     <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
@@ -439,7 +441,7 @@
                                     <!-- Project details-->
                                     <h2 class="text-uppercase">Corte infantil</h2>
                                     <p class="item-intro text-muted">Paciencia y precisión para los más pequeños.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/corteinfantil.jpg" alt="..." />
+                                    <img class="img-fluid d-block mx-auto" src="assets/corteinfantil.jpg" alt="Corte Infantil" />
                                     <p>Experiencia amigable y divertida para los más pequeños. Cortes modernos o clásicos realizados con paciencia y cuidado, garantizando comodidad y un acabado impecable para los reyes de la casa.</p>
 
                                     <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
@@ -465,7 +467,7 @@
                                     <!-- Project details-->
                                     <h2 class="text-uppercase">Perfilado de barba</h2>
                                     <p class="item-intro text-muted">Contorno perfecto según tu rostro.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/perfiladobarba.jpg" alt="..." />
+                                    <img class="img-fluid d-block mx-auto" src="assets/perfiladobarba.jpg" alt="Perfilado de barba" />
                                     <p>Dale forma y carácter a tu barba. Contorneamos y alineamos según tu tipo de rostro, eliminando exceso de vello y realzando tu estilo. Incluye toalla caliente para mayor confort y precisión.</p>
 
                                     <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
@@ -491,7 +493,7 @@
                                     <!-- Project details-->
                                     <h2 class="text-uppercase">Diseño Personalizado</h2>
                                     <p class="item-intro text-muted">Líneas, figuras o detalles artísticos.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/disenio.jpg" alt="..." />
+                                    <img class="img-fluid d-block mx-auto" src="assets/disenio.jpg" alt="Diseño Personalizado" />
                                     <p>Exprésate con estilo. Creamos líneas, figuras, logos o trazos artísticos en el cabello, ajustados a tu gusto. Ideal para quienes buscan destacar con creatividad y originalidad en su look.</p>
 
                                     <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
@@ -517,7 +519,7 @@
                                     <!-- Project details-->
                                     <h2 class="text-uppercase">Coloración de Cabello</h2>
                                     <p class="item-intro text-muted">Tinte, cobertura de canas o efectos modernos.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/coloracion.jpg" alt="..." />
+                                    <img class="img-fluid d-block mx-auto" src="assets/coloracion.jpg" alt="Coloración de Cabello" />
                                     <p>Transforma tu imagen con colores vibrantes o discretos. Aplicamos tintes para cubrir canas, lograr efectos modernos o simplemente renovar tu estilo. Incluye diagnóstico capilar y asesoría personalizada.</p>
 
                                     <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
@@ -537,14 +539,14 @@
             <div class="modal-content login-wrapper">
                 <span class="close" onclick="closeModal('loginModal')">&times;</span>
                 <div class="login-left">
-                    <a class="navbar-brand" href="#page-top"><img src="assets/ByLogo.svg" alt="..." /></a>
+                    <a class="navbar-brand" href="#page-top"><img src="assets/ByLogo.svg" alt="Logo Barbería ByL" /></a>
                     <h2>Tradición, Estilo y Elegancia Masculina</h2>
                     <p>Selecciona cómo deseas ingresar para continuar.</p>
 
                     <!-- Usuario -->
                     <div class="btn-center-group">
                         <button class="btn-access" onclick="openModal('adminUser')">
-                            <i class="fas fa-user"></i> Ingresar como Cliente
+                            <i class="fas fa-user"></i> Ingresar como Usuario
                         </button>
 
                         <!-- Administrador -->
