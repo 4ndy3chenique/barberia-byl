@@ -11,7 +11,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * Filtro para agregar cabeceras de seguridad HTTP
  * @author andy9
  */
 @WebFilter("/*")  // Aplica el filtro a todas las rutas de la aplicación
@@ -28,8 +28,7 @@ public class SecurityHeadersFilter implements Filter {
 
         HttpServletResponse httpResp = (HttpServletResponse) response;
 
-        // Content Security Policy ajustada
-        // Permite recursos propios + CDNs específicos
+        // ✅ Content Security Policy ajustada con tus CDNs
         httpResp.setHeader("Content-Security-Policy",
                 "default-src 'self'; " +
                 "script-src 'self' https://cdn.jsdelivr.net https://use.fontawesome.com; " +
@@ -38,14 +37,17 @@ public class SecurityHeadersFilter implements Filter {
                 "img-src 'self'; " +
                 "frame-ancestors 'none'");
 
-        // Anti-clickjacking
+        // ✅ Anti-clickjacking
         httpResp.setHeader("X-Frame-Options", "DENY");
 
-        // Deshabilitar MIME sniffing
+        // ✅ Deshabilitar MIME sniffing
         httpResp.setHeader("X-Content-Type-Options", "nosniff");
 
-        // Política de referencia
+        // ✅ Política de referencia
         httpResp.setHeader("Referrer-Policy", "no-referrer");
+
+        // ✅ (Opcional) HSTS si tu app usa solo HTTPS
+        // httpResp.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
 
         chain.doFilter(request, response);
     }
