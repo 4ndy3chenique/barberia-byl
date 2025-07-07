@@ -17,6 +17,7 @@ public class CitaDAO implements DAO<Cita> {
         try {
             Conexion c = new Conexion();
             Connection conn = c.conecta();
+            // Asegúrate de que los nombres de las columnas coincidan exactamente con tu tabla
             String query = "INSERT INTO citas (empleado, servicio, sede, fecha, hora_inicio, hora_fin, cliente_nombre, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement sentencia = conn.prepareStatement(query);
 
@@ -32,10 +33,12 @@ public class CitaDAO implements DAO<Cita> {
             sentencia.executeUpdate();
             sentencia.close();
             conn.close();
+            System.out.println("Cita creada exitosamente para: " + cita.getClienteNombre()); // Para depuración
         } catch (SQLException e) {
             System.out.println("Error al insertar cita: " + e.getMessage());
+            Logger.getLogger(CitaDAO.class.getName()).log(Level.SEVERE, "Error al insertar cita", e); // Log más detallado
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(CitaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CitaDAO.class.getName()).log(Level.SEVERE, "Error de clase no encontrada al conectar a la BD", ex);
         }
     }
 
@@ -61,15 +64,16 @@ public class CitaDAO implements DAO<Cita> {
             sentencia.executeUpdate();
             sentencia.close();
             conn.close();
+            System.out.println("Cita actualizada exitosamente para ID: " + cita.getIdCita()); // Para depuración
         } catch (SQLException e) {
             System.out.println("Error al actualizar cita: " + e.getMessage());
+            Logger.getLogger(CitaDAO.class.getName()).log(Level.SEVERE, "Error al actualizar cita", e);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(CitaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CitaDAO.class.getName()).log(Level.SEVERE, "Error de clase no encontrada al conectar a la BD", ex);
         }
     }
 
     // Método para eliminar una cita por su ID
-
     public void delete(int idCita) {
         try {
             Conexion c = new Conexion();
@@ -82,10 +86,12 @@ public class CitaDAO implements DAO<Cita> {
 
             sentencia.close();
             conn.close();
+            System.out.println("Cita eliminada exitosamente para ID: " + idCita); // Para depuración
         } catch (SQLException e) {
             System.out.println("Error al eliminar cita: " + e.getMessage());
+            Logger.getLogger(CitaDAO.class.getName()).log(Level.SEVERE, "Error al eliminar cita", e);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(CitaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CitaDAO.class.getName()).log(Level.SEVERE, "Error de clase no encontrada al conectar a la BD", ex);
         }
     }
 
@@ -97,7 +103,7 @@ public class CitaDAO implements DAO<Cita> {
         try {
             Conexion c = new Conexion();
             Connection conn = c.conecta();
-            String query = "SELECT * FROM citas";
+            String query = "SELECT * FROM citas ORDER BY fecha DESC, hora_inicio ASC"; // Ordenar para mejor visualización
             Statement sentencia = conn.createStatement();
             ResultSet resultado = sentencia.executeQuery(query);
 
@@ -113,23 +119,24 @@ public class CitaDAO implements DAO<Cita> {
                     resultado.getString("cliente_nombre"),
                     resultado.getString("estado")
                 );
-
                 citas.add(cita);
             }
 
+            resultado.close();
             sentencia.close();
             conn.close();
         } catch (SQLException e) {
             System.out.println("Error al listar citas: " + e.getMessage());
+            Logger.getLogger(CitaDAO.class.getName()).log(Level.SEVERE, "Error al listar citas", e);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(CitaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CitaDAO.class.getName()).log(Level.SEVERE, "Error de clase no encontrada al conectar a la BD", ex);
         }
-
         return citas;
     }
 
     @Override
     public void delete(String codigo) {
+        // Este método no se usa, pero se mantiene por la interfaz DAO<Cita>
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

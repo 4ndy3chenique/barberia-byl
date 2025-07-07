@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Barbería B&L</title>          
+        <title>Barbería B&L</title>           
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
@@ -39,7 +39,7 @@
                     </ul>
                     <div class="d-flex align-items-center ms-lg-3">
                         <a href="<%= request.getContextPath()%>/logout" class="btn btn-outline-light me-2"
-                           onclick="return confirm('¿Estás seguro de que deseas cerrar sesión?');">
+                            onclick="return confirm('¿Estás seguro de que deseas cerrar sesión?');">
                             <i class="fas fa-sign-out-alt"></i> Salir
                         </a>
                     </div>
@@ -55,7 +55,6 @@
                 </div>
             </div>
 
-            <!-- Flecha animada -->
             <div class="scroll-down-arrow">
                 <i class="fas fa-chevron-down"></i>
             </div>
@@ -78,7 +77,19 @@
 
         <main>
             <section class="reserva-form">
-                <form id="reserva-form">
+                <form action="${pageContext.request.contextPath}/CitaServlet" method="post">
+                    <input type="hidden" name="accion" value="crear">
+
+                    <%-- Mensaje de error si hay alguno --%>
+                    <% if (request.getAttribute("errorMensaje") != null) { %>
+                        <p style="color: red; font-weight: bold;"><%= request.getAttribute("errorMensaje") %></p>
+                    <% } %>
+                    
+                    <%-- Mensaje de éxito después de reservar --%>
+                    <% if (request.getAttribute("successMensaje") != null) { %>
+                        <p style="color: green; font-weight: bold;"><%= request.getAttribute("successMensaje") %></p>
+                    <% } %>
+
                     <div class="form-group">
                         <label for="nombre">Nombre completo:</label>
                         <input type="text" id="nombre" name="nombre" required>
@@ -96,32 +107,52 @@
                         <input type="date" id="fecha" name="fecha" required>
                     </div>
                     <div class="form-group">
-                        <label for="hora">Hora de la cita:</label>
+                        <label for="hora">Hora de inicio de la cita:</label>
                         <input type="time" id="hora" name="hora" required>
                     </div>
+                    
+                    <div class="form-group">
+                        <label for="horaFin">Hora de fin de la cita:</label>
+                        <input type="time" id="horaFin" name="horaFin" required>
+                    </div>
+
                     <div class="form-group">
                         <label for="servicio">Servicio:</label>
                         <select id="servicio" name="servicio" required>
                             <option value="">Selecciona un servicio</option>
-                            <option value="corte">Corte de cabello</option>
-                            <option value="afeitado">Afeitado</option>
-                            <option value="coloracion">Coloración</option>
-                            <option value="tratamiento">Tratamiento capilar</option>
+                            <option value="Corte de cabello">Corte de cabello</option>
+                            <option value="Afeitado">Afeitado</option>
+                            <option value="Coloracion">Coloración</option>
+                            <option value="Tratamiento capilar">Tratamiento capilar</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="barbero">Barbero (opcional):</label>
                         <select id="barbero" name="barbero">
                             <option value="">Selecciona un barbero (opcional)</option>
-                            <option value="juan">Juan</option>
-                            <option value="pedro">Pedro</option>
-                            <option value="maria">María</option>
+                            <option value="Juan">Juan</option>
+                            <option value="Pedro">Pedro</option>
+                            <option value="Maria">María</option>
                         </select>
                     </div>
+
+                    <div class="form-group">
+                        <label for="sede">Sede:</label>
+                        <select id="sede" name="sede" required>
+                            <option value="">Selecciona una sede</option>
+                            <option value="Sede Principal">Sede Principal</option>
+                            <option value="Sede Miraflores">Sede Miraflores</option>
+                            <option value="Sede San Isidro">Sede San Isidro</option>
+                        </select>
+                    </div>
+
                     <div class="form-group">
                         <label for="comentarios">Comentarios adicionales:</label>
                         <textarea id="comentarios" name="comentarios" rows="3"></textarea>
                     </div>
+                    
+                    <input type="hidden" name="estado" value="Pendiente">
+
                     <button type="submit" class="btn-reservar">Reservar cita</button>
                 </form>
             </section>
