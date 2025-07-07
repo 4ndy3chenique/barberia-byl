@@ -20,6 +20,7 @@ Users\ServicioServlet.class
 Users\ProductoDAO.class
 Users\Empleado.class
 Servicios.class
+Users\SecurityHeadersFilter.class
 Users\GenerarReporteBoletasPDF.class
 Users\UsuarioServlet.class
 Users\EmpleadoDAO.class
