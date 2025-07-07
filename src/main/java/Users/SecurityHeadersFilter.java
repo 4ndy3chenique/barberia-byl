@@ -28,10 +28,23 @@ public class SecurityHeadersFilter implements Filter {
 
         HttpServletResponse httpResp = (HttpServletResponse) response;
 
-        // Cabeceras de seguridad recomendadas
-        httpResp.setHeader("Content-Security-Policy", "default-src 'self'");
+        // Content Security Policy ajustada
+        // Permite recursos propios + CDNs específicos
+        httpResp.setHeader("Content-Security-Policy",
+                "default-src 'self'; " +
+                "script-src 'self' https://cdn.jsdelivr.net https://use.fontawesome.com; " +
+                "style-src 'self' https://cdn.jsdelivr.net https://use.fontawesome.com; " +
+                "font-src 'self' https://cdn.jsdelivr.net https://use.fontawesome.com; " +
+                "img-src 'self'; " +
+                "frame-ancestors 'none'");
+
+        // Anti-clickjacking
         httpResp.setHeader("X-Frame-Options", "DENY");
+
+        // Deshabilitar MIME sniffing
         httpResp.setHeader("X-Content-Type-Options", "nosniff");
+
+        // Política de referencia
         httpResp.setHeader("Referrer-Policy", "no-referrer");
 
         chain.doFilter(request, response);
